@@ -15,27 +15,32 @@ const last_posts = posts.slice(0, 3);
     <div class="text-3xl py-3 font-bold">IT Support & Network Administration Specialist</div>
     <div class="py-2">
       <text class="text-lg">
-        I am a well versed Information Technology Specialist, with skills that include Ubiquity Unifi Technology, practice with
-        various Virtual Machine platforms including; VMware, XCP-ng, Hyper-V, TrueNAS, Proxmox-VE, Azure AD, and Amazon EC2.  Most of my previous
-        expirence included working with Office365(Now Microsoft 365) as well as many other different platforms both Closed and Open Source.
+        This website is the Hub of my various projects, as well as a single place for me to show off what makes me who I am.  Ever since I was a small kid I have migrated towards technology over sports, card games, and other normal 2000 era kid stuff.
+        After years of showing intrest in technology I built my first computer with my Dad at the age of Five.  After that I continued into learning more about the computer at my hands, it started simnple as gaming, then running Minecraft servers, and eventually...
+        on to more complicated projects, that led me to my first IT job working as a Help Desk Technician at, Your Business Solutions, INC. in Texas Remote from my home in Washington at the age of 19.
+      </text>
+      <div class="divider my-0"></div>
+      <text class="text-lg">
+        Today I am a Self Employed IT Support & Network Administration Specialist, which is fancy words for a IT Contractor who can help with almost anything you could need.  My Focus recently has been open source business integration, and cost savings.
+        I have been Striving to create a good way to link common open source and reliable software into common everyday business practices to replace software such as Office 365, Exchange, ESXi, VDI, and more.  Even created a single sign on environment linking Active Directory
+        Authentication into Opensource software using LDAP or O-Auth Solutions through Authentik or Cloudflare Access(Free Tier).  For More information as to what I've been working on, or to connect with me checkout my Blog, Connect with me on LinkedIn, or shoot me an email!
       </text>
     </div>
     <div class="mt-8">
-      <a class="btn" href="/cv"> My Resume</a>
-      <a class="btn" href="https://www.linkedin.com/in/amatthiesen1/" target="_blank"> Let's connect!</a>
+      <a class="btn" href="/cv">My Resume</a>
+      <a class="btn" href="https://www.linkedin.com/in/amatthiesen1/" target="_blank">Let's connect!</a>
     </div>
   </div>
 
   <div>
     <div class="text-3xl w-full font-bold mb-2">My pinned projects</div>
   </div>
-
   <HorizontalCard
     title="My Journey to Network Booting with Open Source"
     img="/netbootxyz.png"
     desc="My journey learning and exploring ipxe and netboot.xyz, learning tips and tricks and how to boot windows and bootable images."
     url="/blog/netboot"
-    badge="OpenSource"
+    badge="FOSS:Tutorial / Ongoing Project"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
@@ -43,15 +48,8 @@ const last_posts = posts.slice(0, 3);
     img="/photography.jpg"
     desc="My Girlfriend and I's Hobbiest Photography Portfolio."
     url="https://matthiesenphotography.com"
-    badge="Personal Website"
   />
-  <!--div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
+  <!--
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Demo Project 3"
@@ -65,7 +63,6 @@ const last_posts = posts.slice(0, 3);
   <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from my blog</div>
   </div>
-
   {
     last_posts.map((post) => (
       <>
@@ -74,7 +71,7 @@ const last_posts = posts.slice(0, 3);
           img={post.data.heroImage}
           desc={post.data.description}
           url={"/blog/" + post.slug}
-          target="_self"
+          target="_blank"
           badge={post.data.badge}
         />
         <div class="divider my-0" />

@@ -4,7 +4,7 @@ description: "My journey learning and exploring ipxe and netboot.xyz, learning t
 pubDate: "Dec 11 2023"
 heroImage: "/netbootxyz.png"
 #updatedDate: "Dec 12 2023"
-badge: "OpenSource"
+badge: "FOSS:Tutorial / Ongoing Project"
 ---
 
 This post is about my exploration into how to Netboot using Netboot.xyz, but as I quickly realized, Netboot.xyz is not as simple as it first seems.  Its based on ipxe.org's codebase and technology.  In fact, most of the resources on ipxe.org are directly relevent in Netbootxyz, from menu options and formating, to the way you boot operating systems.  The Documentation at the ipxe website helped me learn more about the process of how network booting with ipxe really worked, as well as they provide examples of how to utilize their software.  Which the reason I learned about them in the first place was after I first deployed Netboot.xyz for the first time and attempted a network boot, and before netboot.xyz launched there was the website for ipxe.org!  My first deployment was using docker, which worked quite well.
