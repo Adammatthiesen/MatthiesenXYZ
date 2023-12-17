@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
+import BannerCard from "../components/BannerCard.astro";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -19,11 +20,11 @@ const last_posts = posts.slice(0, 3);
         After years of showing intrest in technology I built my first computer with my Dad at the age of Five.  After that I continued into learning more about the computer at my hands, it started simnple as gaming, then running Minecraft servers, and eventually...
         on to more complicated projects, that led me to my first IT job working as a Help Desk Technician at, Your Business Solutions, INC. in Texas Remote from my home in Washington at the age of 19.
       </text>
-      <div class="divider my-0"></div>
+      <br><br>
       <text class="text-lg">
-        Today I am a Self Employed IT Support & Network Administration Specialist, which is fancy words for a IT Contractor who can help with almost anything you could need.  My Focus recently has been open source business integration, and cost savings.
+        Today I am a Self Employed IT Support & Network Administration Specialist, which is fancy words for a well rounded IT Guy who can help with almost anything you could need.  My Focus recently has been open source business integration, and cost savings.
         I have been Striving to create a good way to link common open source and reliable software into common everyday business practices to replace software such as Office 365, Exchange, ESXi, VDI, and more.  Even created a single sign on environment linking Active Directory
-        Authentication into Opensource software using LDAP or O-Auth Solutions through Authentik or Cloudflare Access(Free Tier).  For More information as to what I've been working on, or to connect with me checkout my Blog, Connect with me on LinkedIn, or shoot me an email!
+        Authentication into Opensource software using LDAP or O-Auth Solutions through Authentik or Cloudflare Access(Free Tier).  For More information as to what I've been working on, or to connect with me checkout my Blog, Connect with me on LinkedIn, or checkout my Support Center!
       </text>
     </div>
     <div class="mt-8">
@@ -33,24 +34,38 @@ const last_posts = posts.slice(0, 3);
   </div>
 
   <div>
+    <div class="text-3xl w-full font-bold mb-2">Get IT Support</div>
+  </div>
+  <BannerCard
+    title="IT Help Desk & Support Center"
+    img="/mxyz-support-banner-whitetext.png"
+    desc="IT Support Center - Progress updates and information regarding release date."
+    url="/blog/support"
+    badge="Currently Links to Blog Post NOT Support Center, That will Change after release"
+    target=""
+  />
+
+  <div>
     <div class="text-3xl w-full font-bold mb-2">My pinned projects</div>
   </div>
-  <HorizontalCard
-    title="My Journey to Network Booting with Open Source"
-    img="/netbootxyz.png"
-    desc="My journey learning and exploring ipxe and netboot.xyz, learning tips and tricks and how to boot windows and bootable images."
-    url="/blog/netboot"
-    badge="FOSS:Tutorial / Ongoing Project"
-  />
-  <div class="divider my-0"></div>
   <HorizontalCard
     title="Matthiesen Photography"
     img="/photography.jpg"
     desc="My Girlfriend and I's Hobbiest Photography Portfolio."
     cfbadge="https://img.shields.io/endpoint?url=https://cloudflare-pages-badges.matthiesenxyz.workers.dev?projectName=matthiesenphotography"
     url="https://matthiesenphotography.com"
+    target="_blank"
   />
-  <!--
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="My Journey to Network Booting with Open Source"
+    img="/netbootxyz.png"
+    desc="My journey learning and exploring ipxe and netboot.xyz, learning tips and tricks and how to boot windows and bootable images."
+    url="/blog/netboot"
+    badge="FOSS:Tutorial / Ongoing Project"
+    target=""
+  />
+  <!-- TEMPLATE
   <div class="divider my-0"></div>
   <HorizontalCard
     title="Demo Project 3"
@@ -58,6 +73,7 @@ const last_posts = posts.slice(0, 3);
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
     badge="FOSS"
+    target=""
   />
 -->
 
@@ -72,7 +88,7 @@ const last_posts = posts.slice(0, 3);
           img={post.data.heroImage}
           desc={post.data.description}
           url={"/blog/" + post.slug}
-          target="_blank"
+          target=""
           badge={post.data.badge}
         />
         <div class="divider my-0" />
