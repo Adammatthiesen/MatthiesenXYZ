@@ -2,6 +2,7 @@
 title: "Title"
 description: "Short Description"
 pubDate: "Sep 12 2022"
+draft: true
 #heroImage: "/post_img.webp"
 #updatedDate: "Dec 12 2023"
 #badge: "Demo badge"

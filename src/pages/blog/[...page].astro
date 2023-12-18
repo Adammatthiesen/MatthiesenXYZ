@@ -4,7 +4,9 @@ import HorizontalCard from "../../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
   posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(posts, { pageSize: 10 });
 }
@@ -32,7 +34,7 @@ const { page } = Astro.props;
               img={post.data.heroImage}
               desc={post.data.description}
               url={"/blog/" + post.slug}
-              target="_blank"
+              target=""
               badge={post.data.badge}
             />
             <div class="divider my-0" />
