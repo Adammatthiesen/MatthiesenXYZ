@@ -1,5 +1,4 @@
 ---
-const { sideBarActiveItemID } = Astro.props;
 const activeClass = "bg-base-300"; // For primary color replace with `active` class
 ---
 
@@ -16,6 +15,11 @@ const activeClass = "bg-base-300"; // For primary color replace with `active` cl
     <li>
         <a class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
         id="cv" href="/cv">Resume / CV</a>
+    </li>
+    <li>
+        <a
+        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        id="hddreports" href="/hddreports">HDD Wiped Disk Reports</a>
     </li>
     <li>
         <a href="https://support.matthiesen.xyz">
@@ -37,23 +41,23 @@ const activeClass = "bg-base-300"; // For primary color replace with `active` cl
     </li-->
     
     <!-- EXTERNAL SITES -->
-    <li>
-        <a class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
-        id="photography" href="https://matthiesenphotography.com">
-        Matthiesen Photography
-        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcloudflare-pages-badges.matthiesenxyz.workers.dev%2F%3FprojectName%3Dmatthiesenphotography&style=for-the-badge&label=%20">
-        </a>
-    </li>
-    <li>
-        <a class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
-        id="basestation" href="https://www.basestation.space">
-        Basestation Network
-        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcloudflare-pages-badges.matthiesenxyz.workers.dev%2F%3FprojectName%3Dbasestationspace&style=for-the-badge&label=%20">
-        </a>
-    </li>
+    <div class="w-full max-w-sm p-0 bg-white items-center border border-gray-200 rounded-lg shadow sm:p-0 md:p-2 dark:bg-gray-800 dark:border-gray-700"><center>External Projects</center>
+        <div class="divider my-0" />
+        <li>
+            <a class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+            id="photography" href="https://matthiesenphotography.com">
+            Matthiesen Photography
+            <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcloudflare-pages-badges.matthiesenxyz.workers.dev%2F%3FprojectName%3Dmatthiesenphotography&style=for-the-badge&label=%20">
+            </a>
+        </li>
+        <li>
+            <a class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+            id="basestation" href="https://www.basestation.space">
+            Basestation Network
+            <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcloudflare-pages-badges.matthiesenxyz.workers.dev%2F%3FprojectName%3Dbasestationspace&style=for-the-badge&label=%20">
+            </a>
+        </li>
+      
+    </div>
 </ul>
 
-<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
-const activeItemElem = document.getElementById(sideBarActiveItemID);
-activeItemElem.classList.add(activeClass);
-</script>

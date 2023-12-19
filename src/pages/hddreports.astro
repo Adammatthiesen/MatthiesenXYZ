@@ -17,7 +17,7 @@ const hddreportlist = await getCollection("hddreports");
         {hddreportlist.map((post) => (
           <>
           <HorizontalCard
-            title={post.data.make + " - " + post.data.serial}
+            title={post.data.make + " - " + post.data.serial + " (" + post.data.type + ")"}
             desc={"Report Date: " + post.data.reportDate.toDateString() + " | Drive Capacity: " + post.data.capacity}
             url={"/hddreports/" + post.slug}
             target=""

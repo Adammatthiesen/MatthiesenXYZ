@@ -17,6 +17,7 @@ const hddSchema = z.object({
     serial: z.string(),
     make: z.string(),
     capacity: z.string(),
+    type: z.string(),
     reportDate: z.coerce.date(),
 });
 

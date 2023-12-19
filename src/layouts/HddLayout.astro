@@ -6,7 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 
 export interface Props extends hddSchema {}
 
-const { serial, make, reportDate, capacity } = Astro.props;
+const { serial, make, type, reportDate, capacity } = Astro.props;
 
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(reportDate).format("ll");
@@ -16,7 +16,8 @@ const displayDate = dayjs(reportDate).format("ll");
   <main class="relative overflow-x-auto flex flex-col w-[1500px]">
     <article class="prose prose-lg max-w-[1500px] prose-img:mx-auto">
       <h1 class="title relative max-w-[1500px] my-2 text-4xl font-bold">{make + " ~ " + serial}</h1>
-      
+      Drive Type: <code>{type}</code>
+      <br>
       Drive Capacity: <code>{capacity}</code> 
       <br>
       Report Date: <code>{reportDate && <time>{displayDate}</time>}</code>
