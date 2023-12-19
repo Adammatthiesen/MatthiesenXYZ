@@ -12,11 +12,20 @@ const blogSchema = z.object({
     tutorialbadge: z.string().optional(),
     projectbadge: z.string().optional(),
 });
+const hddSchema = z.object({
+    serial: z.string(),
+    make: z.string(),
+    capacity: z.string(),
+    reportDate: z.coerce.date(),
+});
 
 export type BlogSchema = z.infer<typeof blogSchema>;
+export type hddSchema = z.infer<typeof blogSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
+const hddreportsCollection = defineCollection({ schema: hddSchema });
 
 export const collections = {
     'blog': blogCollection,
+    'hddreports': hddreportsCollection,
 }
