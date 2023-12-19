@@ -33,8 +33,9 @@ const last_posts = posts.slice(0, 3);
         </thead>
     </table>
 </div>
+<br>
 
-  <div class="pb-12 mt-5">
+  <div class="relative overflow-x-auto flex flex-col bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
     <div class="py-2">
       <text class="text-lg">
         This website is the Hub of my various projects, as well as a single place for me to show off what makes me who I am.  Ever since I was a small kid I have migrated towards technology over sports, card games, and other normal 2000 era kid stuff.
@@ -59,9 +60,11 @@ const last_posts = posts.slice(0, 3);
     </div>
   </div>
 
+  <div class="relative pd-2 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
   <div>
-    <div class="text-3xl w-full font-bold mb-2">Get IT Support</div>
+    <div class="text-3xl font-bold mb-2">Get IT Support</div>
   </div>
+  <div class="divider my-0" />
   <GetSupportCard
     title="IT Help Desk & Support Center"
     img="/mxyz-support-banner-whitetext.png"
@@ -70,10 +73,14 @@ const last_posts = posts.slice(0, 3);
     warn="Currently Links to Blog Post NOT Support Center... That will Change after release!"
     target=""
   />
+</div>
 
+
+<div class="relative pd-2 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
   <div>
-    <div class="text-3xl w-full font-bold mb-2">External Projects</div>
+    <div class="text-3xl font-bold mb-2">External Projects</div>
   </div>
+  <div class="divider my-0" />
   <HorizontalCard
     title="Matthiesen Photography"
     img="/photography.jpg"
@@ -82,6 +89,7 @@ const last_posts = posts.slice(0, 3);
     url="https://matthiesenphotography.com"
     target="_blank"
   />
+</div>
   <!-- TEMPLATE
   <div class="divider my-0"></div>
   <HorizontalCard
@@ -93,13 +101,13 @@ const last_posts = posts.slice(0, 3);
     target=""
   />
 -->
-
+<div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
   <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from my blog</div>
+    <div class="text-3xl font-bold mb-2">Latest from my blog</div>
   </div>
+  <div class="divider my-0" />
   {
     last_posts.map((post) => (
-      <>
         <HorizontalCard
           title={post.data.title}
           img={post.data.heroImage}
@@ -112,7 +120,7 @@ const last_posts = posts.slice(0, 3);
           projectbadge={post.data.projectbadge}
         />
         <div class="divider my-0" />
-      </>
     ))
   }
+</div>
 </BaseLayout>

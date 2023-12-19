@@ -4,10 +4,12 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Profile</div>
   </div>
 
+  <div class="divider my-0" />
   <div class="mb-10 text-justify">
     <p>I am a Self-Employed IT Guy and motivated individual ready for a new challenge everyday!</p>
     <br />
@@ -20,6 +22,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Education</div>
   </div>
 
+  <div class="divider my-0" />
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement
       title="Pierce County Skills Center (PCSC)"
@@ -33,6 +36,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Experience</div>
   </div>
 
+  <div class="divider my-0" />
   <div class="time-line-container mb-10">
     <TimeLineElement
       title="IT Contractor | Upwork"
@@ -58,6 +62,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Certifications</div>
   </div>
 
+  <div class="divider my-0" />
   <ul class="list-disc mx-6 mb-10 grid gap-2">
     <li>
       TestOut PCPro
@@ -71,6 +76,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Skills</div>
   </div>
 
+  <div class="divider my-0" />
   <ul class="list-disc md:columns-5 columns-2 mx-6">
     <li>Computer Repair</li>
     <li>Computer Networking</li>
@@ -89,4 +95,5 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <li>MacOS</li>
     <li>Linux</li>
   </ul>
+</div>
 </BaseLayout>
