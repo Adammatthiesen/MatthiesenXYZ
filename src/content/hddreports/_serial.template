@@ -2,6 +2,7 @@
 serial: Serial
 make: MAKE
 capacity: 00Gb
+type: 2.5"/3.5" HDD/SDD
 reportDate: Dec 19 2023
 ---
 
