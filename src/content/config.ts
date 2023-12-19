@@ -8,6 +8,9 @@ const blogSchema = z.object({
     updatedDate: z.string().optional(),
     heroImage: z.string().optional(),
     badge: z.string().optional(),
+    blogbadge: z.string().optional(),
+    tutorialbadge: z.string().optional(),
+    projectbadge: z.string().optional(),
 });
 
 export type BlogSchema = z.infer<typeof blogSchema>;

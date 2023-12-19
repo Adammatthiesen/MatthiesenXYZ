@@ -4,7 +4,8 @@ description: "SolidInvoice Docker Setup BASIC, Since there wasnt a good Tutorial
 pubDate: "Dec 18 2023"
 heroImage: "/solidinvoice.png"
 #updatedDate: "Dec 12 2023"
-badge: "FOSS:Tutorial"
+badge: "FOSS"
+tutorialbadge: "Tutorial"
 ---
 
 Below is my docker compose script used in Portainer(Can also be used as regular docker-compose.yml)  Ive left the cron scheduler uncommented for installation, please uncomment when the web gui asks you to at the end. 

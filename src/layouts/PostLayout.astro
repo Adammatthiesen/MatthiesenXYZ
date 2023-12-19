@@ -15,7 +15,7 @@ import { Image } from "@astrojs/image/components";
 
 <BaseLayout title={title} description={description} image={heroImage}>
   <main class="md:flex md:justify-center">
-    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
+    <article class="prose prose-lg max-w-[1500px] prose-img:mx-auto">
       {
         heroImage && (
         <Image
@@ -25,22 +25,21 @@ import { Image } from "@astrojs/image/components";
             format="webp"
             src={heroImage}
             alt={title}
-            class="w-full mb-6"
+            class="max-w-[750px] mb-6"
           />
         )
       }
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
-      <br />
-      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
+      Published: {pubDate && <time>{displayDate}</time>}
       {
         updatedDate && (
           <div>
             {" "}
-            Last updated on <time>{updatedDate}</time>{" "}
+            Last Modified: <time>{updatedDate}</time>{" "}
           </div>
         )
       }
+      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
       <div class="divider my-2"></div>
       <slot />
     </article>

@@ -4,7 +4,8 @@ description: "A Getting Started Guide to Syncthing and Getting started with the 
 pubDate: "Dec 12 2023"
 heroImage: "/syncthing.png"
 #updatedDate: "Dec 12 2023"
-badge: "FOSS:Tutorial"
+badge: "FOSS"
+tutorialbadge: "Tutorial"
 ---
 <img src="https://status-monitor.basestation.space/api/badge/22/status?label=BSN-SyncThing-Relay+&style=for-the-badge">
 

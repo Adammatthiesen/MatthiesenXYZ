@@ -4,22 +4,53 @@ const activeClass = "bg-base-300"; // For primary color replace with `active` cl
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-    <li><a class="py-3 text-base" id="blog" href="/blog/">Blog</a></li>
-    <li><a class="py-3 text-base" id="cv" href="/cv">Resume / CV</a></li>
-    <li> * COMING SOON *</li>
-    <li><a class="py-3 text-base" id="cv" href="https://support.matthiesen.xyz">Support Center</a></li>
+    <li>
+        <a class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+        id="home" href="/">Home</a>
+    </li>
+    <li>
+        <a 
+        class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+        id="blog" href="/blog/">Blog</a>
+    </li>
+    <li>
+        <a class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+        id="cv" href="/cv">Resume / CV</a>
+    </li>
+    <li>
+        <a href="https://support.matthiesen.xyz">
+          <div class="flex items-center p-1 mb-1 text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <span class="sr-only">Coming Soon</span>
+            <div>
+              <span class="font-medium">Coming Soon - </span> Support Center
+            </div>
+          </div>
+        </a>
+    </li>
     <!--li>
         <a
-            class="py-3 text-base"
-            href="mailto:adam@matthiesen.xyz"
-            target="_blank"
-            referrerpolicy="no-referrer-when-downgrade">E-Mail Me</a
-        >
+        class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        id="support" href="">IT Helpdesk & Support Center</a>
     </li-->
-    <li> * External Projects *</li>
-    <li><a class="py-3 text-base" id="photography" href="https://matthiesenphotography.com">Photography</a></li>
-    <li><a class="py-3 text-base" id="basestation" href="https://www.basestation.space">Basestation Network</a></li>
+    
+    <!-- EXTERNAL SITES -->
+    <li>
+        <a class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+        id="photography" href="https://matthiesenphotography.com">
+        Matthiesen Photography
+        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcloudflare-pages-badges.matthiesenxyz.workers.dev%2F%3FprojectName%3Dmatthiesenphotography&style=for-the-badge&label=%20">
+        </a>
+    </li>
+    <li>
+        <a class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+        id="basestation" href="https://www.basestation.space">
+        Basestation Network
+        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcloudflare-pages-badges.matthiesenxyz.workers.dev%2F%3FprojectName%3Dbasestationspace&style=for-the-badge&label=%20">
+        </a>
+    </li>
 </ul>
 
 <script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>

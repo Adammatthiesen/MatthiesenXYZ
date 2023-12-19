@@ -4,7 +4,8 @@ description: "IT Support Center - Progress updates and information regarding rel
 pubDate: "Dec 17 2023"
 heroImage: "/favicon.png"
 updatedDate: "Dec 18 2023"
-badge: "FOSS:Ongoing Project"
+blogbadge: "Blog Post"
+projectbadge: "Ongoing Project"
 ---
 
 ### Release Date: T.B.D.

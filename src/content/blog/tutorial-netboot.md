@@ -3,8 +3,9 @@ title: "My Journey to Network Booting with Open Source"
 description: "My journey learning and exploring ipxe and netboot.xyz, learning tips and tricks and how to boot windows and bootable images."
 pubDate: "Dec 11 2023"
 heroImage: "/netbootxyz.png"
-#updatedDate: "Dec 12 2023"
-badge: "FOSS:Tutorial / Ongoing Project"
+updatedDate: "Dec 19 2023"
+badge: "FOSS"
+projectbadge: "Tutorial / Ongoing Project"
 ---
 
 This post is about my exploration into how to Netboot using Netboot.xyz, but as I quickly realized, Netboot.xyz is not as simple as it first seems.  Its based on ipxe.org's codebase and technology.  In fact, most of the resources on ipxe.org are directly relevent in Netbootxyz, from menu options and formating, to the way you boot operating systems.  The Documentation at the ipxe website helped me learn more about the process of how network booting with ipxe really worked, as well as they provide examples of how to utilize their software.  Which the reason I learned about them in the first place was after I first deployed Netboot.xyz for the first time and attempted a network boot, and before netboot.xyz launched there was the website for ipxe.org!  My first deployment was using docker, which worked quite well.
@@ -28,9 +29,9 @@ services:
       - /path/to/config:/config # This is where you want to keep your configs, Highly recomended if you want to edit menus like I did.
       - /path/to/assets:/assets # This is for HTML based assets from the webserver hosted from port 8080
     ports:
-      - 3000:3000
-      - 69:69/udp
-      - 8080:80 #optional
+      - 3000:3000 #WEB-GUI
+      - 69:69/udp #TFTP
+      - 8080:80 #HTTP
     restart: unless-stopped
 ```
 
@@ -42,14 +43,16 @@ docker run -d \
   -e MENU_VERSION=2.0.59             `# optional` \
   -p 3000:3000                       `# sets webapp port` \
   -p 69:69/udp                       `# sets tftp port` \
-  -p 8080:80                         `# optional` \
+  -p 8080:80                         `# sets http port` \
   -v /local/path/to/config:/config   `# optional` \
   -v /local/path/to/assets:/assets   `# optional` \
   --restart unless-stopped \
   ghcr.io/netbootxyz/netbootxyz
   ```
 
-The Following are the DEFUALT names for the netboot.xyz files (These would be what you would point your router to pxe boot from. In my case **Docker IP:0.0.0.0 File:ipxe/netboot.xyz.efi** )
+### The Following are the DEFUALT names for the netboot.xyz files 
+
+Example Router entry for netboot server:  <code>Docker IP:0.0.0.0 File:ipxe/netboot.xyz.efi</code>
 
 <table>
   <thead>
@@ -73,6 +76,8 @@ The Following are the DEFUALT names for the netboot.xyz files (These would be wh
 So when I first started trying this i got extremly confused by Netboot.xyz's example by booting WinPE.  But Moddern versions of windows installers already include a perfectly usable WinPE that I was able to use, now in some circumstances you may need to build a WinPE with Custom drivers.
 
 Below is my modification of **config/menus/menu.ipxe**
+
+There is two ways to edit this file... you could log-in to the Web-GUI <code>http://docker-host:3000</code> or, you could edit the physical <code>/local/path/to/config</code> you linked in the docker startup above. *This part **REQUIRES** you to configure volume binds in order to configure and save between reboots.*
 
 Menu Section (Line 43)
 ```
