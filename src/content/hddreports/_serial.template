@@ -1,0 +1,23 @@
+---
+serial: Serial
+make: MAKE
+capacity: 00Gb
+reportDate: Dec 19 2023
+---
+
+## Drive Details
+
+- Disk Drive: <code>XXX</code>
+- SN FULL: <code>XXX</code>
+- Disk Drive Date: <code>Dec 07 2013</code>
+- Type: <code>2.5/3.5 HDD/SDD</code>
+
+## Wipe info
+
+- *Wipe Complted with nwipe v35+*
+
+<!--object data="/test.pdf" type="application/pdf" width="100%" height="700px">
+    <embed width="100%" src="/test.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="/test.pdf">Download PDF</a>.</p>
+    </embed>
+</object-->
