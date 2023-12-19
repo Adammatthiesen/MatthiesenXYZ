@@ -6,7 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 
 export interface Props extends BlogSchema {}
 
-const { title, description, pubDate, updatedDate, heroImage, badge } =
+const { title, description, pubDate, updatedDate, heroImage, badge, blogbadge, tutorialbadge, projectbadge } =
   Astro.props;
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("ll");
@@ -39,7 +39,10 @@ import { Image } from "@astrojs/image/components";
           </div>
         )
       }
-      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
+      {badge && <div class="badge badge-secondary bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{badge}</div>}
+      {blogbadge && <div class="badge badge-secondary bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{blogbadge}</div>}
+      {tutorialbadge && <div class="badge badge-secondary bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{tutorialbadge}</div>}
+      {projectbadge && <div class="badge badge-secondary bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{projectbadge}</div>}
       <div class="divider my-2"></div>
       <slot />
     </article>
