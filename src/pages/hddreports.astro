@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection, getEntry, getEntries } from "astro:content";
+
+const hddreportlist = await getCollection("hddreports");
+---
+<BaseLayout title="HDD Reports" sideBarActiveItemID="hddreports">
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">HDD Reports</div>
+    </div>
+
+    <ul>
+        {
+            hddreportlist.map((post) => (
+              <>
+                <HorizontalCard
+                  title={post.data.make + " - " + post.data.serial}
+                  desc={"Report Date: " + post.data.reportDate + " | Drive Capacity: " + post.data.capacity}
+                  url={"/hddreports/" + post.slug}
+                  target=""
+                />
+                <div class="divider my-0" />
+              </>
+            ))
+          }
+      </ul>

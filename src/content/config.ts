@@ -16,14 +16,14 @@ const hddSchema = z.object({
     serial: z.string(),
     make: z.string(),
     capacity: z.string(),
-    reportDate: z.coerce.date(),
+    reportDate: z.string(),
 });
 
 export type BlogSchema = z.infer<typeof blogSchema>;
-export type hddSchema = z.infer<typeof blogSchema>;
+export type hddSchema = z.infer<typeof hddSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
-const hddreportsCollection = defineCollection({ schema: hddSchema });
+const hddreportsCollection = defineCollection({ type:'content', schema: hddSchema });
 
 export const collections = {
     'blog': blogCollection,

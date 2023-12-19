@@ -1,33 +1,26 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
-import { BlogSchema } from '../../content/config';
+import { hddSchema } from '../../content/config';
 import PostLayout from '../../layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
-    const postEntries = await getCollection('blog');
+    const postEntries = await getCollection('hddreports');
     return postEntries.map(entry => ( { 
         params: { slug: entry.slug }, props: { entry },
     } ));
 }
 
 interface Props {
-    entry: CollectionEntry<"blog">;
+    entry: CollectionEntry<"hddreports">;
 }
 
 const { entry } = Astro.props;
-const post : BlogSchema = entry.data;
+const post : hddSchema = entry.data;
 const { Content } = await entry.render();
 ---
 
 <PostLayout 
-    title={post.title} 
-    description={post.description} 
-    pubDate={post.pubDate} 
-    heroImage={post.heroImage} 
-    updatedDate={post.updatedDate} 
-    badge={post.badge}
-    blogbadge={post.blogbadge}
-    tutorialbadge={post.tutorialbadge}
-    projectbadge={post.projectbadge}>
-    <Content/>
+    title={post.make + " - " + post.serial}
+    desc={"Report Date: " + post.reportDate + " | Drive Capacity: " + post.capacity} 
+    <Content />
 </PostLayout>
