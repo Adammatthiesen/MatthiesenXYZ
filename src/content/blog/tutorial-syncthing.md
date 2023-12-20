@@ -9,14 +9,13 @@ tutorialbadge: "Tutorial"
 ---
 <img src="https://status-monitor.basestation.space/api/badge/22/status?label=BSN-SyncThing-Relay+&style=for-the-badge">
 
-
 My Tutorial is going to be a little backwards from the standard method, as I am going to show you how to setup a Relay, and Discovery server first, as this can be configured as just a client to the Master project to assist growth for a great Open Source Project that is free for us to use.  I personally run a Synthing Relay/Discovery Server that runs 24/7 as well as a Node for some data and file syncs.
 
 ## Getting Started with Relay-Discovery Server (Docker)
 
 Below is my Docker-Compose(Portainer) script, the main things to note here that i have port forwarded are **22026 *Discovery Server Port*, 22067 *Relay Main Port*, and 22070 *Relay Server Status Port*** The Final port is used to comunicate with the main realys endpoint under the *POOLS* section.
 
-```
+```yaml
 ---
 version: '3'
 
@@ -48,7 +47,7 @@ This part is normally for someone who has a NAS or central system that will act 
 
 Below is the script for Docker-Compose (Portainer) The only ports you have to forward if you dont want to utilize a relay for data transfers are **TCP&UDP:22000**
 
-```
+```yaml
 version: "2.1"
 services:
   syncthing:

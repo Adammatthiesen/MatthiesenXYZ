@@ -19,7 +19,8 @@ Instead of repeating already good documentation just follow the normal installat
 
 ### Docker Compose script
 
-```
+```yaml
+---
 version: '3'
 
 services:
@@ -70,3 +71,4 @@ services:
 networks:
   solidinvoice-network:
   ```
+  

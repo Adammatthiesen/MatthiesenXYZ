@@ -2,21 +2,22 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HddHorizontalCard from "../components/HddHorizontalCard.astro";
 import { getCollection, getEntry, getEntries } from "astro:content";
+import { post } from "jquery";
 const hddreportlist = await getCollection("hddreports");
-
+hddreportlist.sort((a, b) => b.data.reportDate.valueOf() - a.data.reportDate.valueOf());
 
 ---
 
 <BaseLayout title="HDD Reports" sideBarActiveItemID="hddreports" >
-  <div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
+  <div class="w-[1000px] pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
     <div class="items-center">
       <br> 
-      <div class="text-5xl font-bold"><center>Hard Drive Reports</center></div>
+      <div class="text-5xl font-bold"><center>Hard Drive Wiped Disk Reports</center></div>
       <br>
     </div>
     <div class="divider my-0" />
-    <div class="w-[1500px]">
-        {hddreportlist.map((post) => (
+    <div class="">
+        { hddreportlist.map((post) => (
           <>
           <HddHorizontalCard
             title={post.data.make + " " + post.data.model + " ~ " + post.data.serial}
@@ -27,7 +28,7 @@ const hddreportlist = await getCollection("hddreports");
           />
             <div class="divider my-0" />
           </>
-          ))
+            ))
         }
     </div></div>
 </BaseLayout>

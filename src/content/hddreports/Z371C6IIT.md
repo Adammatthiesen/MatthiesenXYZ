@@ -7,7 +7,7 @@ type: 2.5" HDD
 reportDate: Dec 19 2023
 ---
 
-## Drive Details
+# Drive Details
 
 - Disk Drive: <code>MQ01ABF050</code>
 - SN: <code>Z371C6IIT</code>

@@ -17,7 +17,7 @@ Because there are a ton of types of routers, in this post I will not be explaini
 
 Since I utilize Portainer, I created a docker stack.  The Following is my the Docker Compose default script. You could also use this for a docker-compose.yml
 
-```
+```yaml
 ---
 version: "2.1"
 services:
@@ -38,7 +38,7 @@ services:
 
 If you want to use the Docker-CLI you can use the code below
 
-```
+```sh
 docker run -d \
   --name=netbootxyz \
   -e MENU_VERSION=2.0.59             `# optional` \
@@ -51,7 +51,7 @@ docker run -d \
   ghcr.io/netbootxyz/netbootxyz
   ```
 
-### The Following are the DEFUALT names for the netboot.xyz files 
+### The Following are the DEFUALT names for the netboot.xyz files
 
 Example Router entry for netboot server:  <code>Docker IP:0.0.0.0 File:ipxe/netboot.xyz.efi</code>
 
@@ -81,7 +81,8 @@ Below is my modification of **config/menus/menu.ipxe**
 There is two ways to edit this file... you could log-in to the Web-GUI <code>http://docker-host:3000</code> or, you could edit the physical <code>/local/path/to/config</code> you linked in the docker startup above. *This part **REQUIRES** you to configure volume binds in order to configure and save between reboots.*
 
 Menu Section (Line 43)
-```
+
+```text
 ### Installers:
 item --gap Installers:
 #item mdt-wim ${space} Windows Deployment x64 (MDT-wim)
@@ -93,7 +94,8 @@ item macrium11 ${space} Macrium Reflect Win11 (net-iso)
 ```
 
 item selection (Under :verify_sigs)
-```
+
+```text
 ###Installers
 
 #:mdt-wim
@@ -134,14 +136,16 @@ boot || goto main_menu
 ```
 
 The **install.bat** files are identical for each directory, containing the following (Username and password depend on your setup. In my case I hosted the files on my NAS.)
-```
+
+```bat
 wpeinit
 net use F: \\<IP>\<SHARE>\wim-boot\<OS Source Files> /user:<User> <Pass>
 F:\setup.exe
 ```
 
 The **winpeshl.ini** file are also identical for each directoy, containing the following
-```
+
+```bat
 [LaunchApps]
 "install.bat"
 ```
@@ -150,8 +154,7 @@ The Files for the Windows Installers are from **Offical Windows ISO** files.  Ju
 
 I Have MDT commented out due to some issues I was having with it, it worked at one point but then suddenly stopped working... It may work for you but it also may not.  its just there for reference.  As for booting Linux I just left the rest of Netboot.xyz's Menu in tact, and it works perfectly!
 
-
 #### Sources
 
-- https://netboot.xyz/docs/ - Netboot.xyz Documentation
-- https://ipxe.org/ - Helped me understand booting windows sources
+- [Netboot XYZ Docs](https://netboot.xyz/docs/) - Netboot.xyz Documentation
+- [iPxE.org](https://ipxe.org/) - Helped me understand booting windows sources
