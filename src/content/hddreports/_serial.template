@@ -8,17 +8,16 @@ reportDate: Dec 19 2023
 
 ## Drive Details
 
-- Disk Drive: <code>XXX</code>
+- Disk Drive Model: <code>XXX</code>
 - SN FULL: <code>XXX</code>
-- Disk Drive Date: <code>Dec 07 2013</code>
 - Type: <code>2.5/3.5 HDD/SDD</code>
 
 ## Wipe info
 
-- *Wipe Complted with nwipe v35+*
+- *Wipe Completed with nwipe v35+*
 
-<!--object data="/test.pdf" type="application/pdf" width="100%" height="700px">
-    <embed width="100%" src="/test.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="/test.pdf">Download PDF</a>.</p>
+<!--object data="hddreports/NAME.pdf" type="application/pdf" width="100%" height="700px">
+    <embed width="100%" src="hddreports/NAME.pdf">
+        <p>This browser does not support PDFs or Want a copy for yourself? Please download the PDF to view it: <a href="hddreports/NAME.pdf">Download PDF</a>.</p>
     </embed>
 </object-->

@@ -8,9 +8,8 @@ reportDate: Dec 19 2023
 
 ## Drive Details
 
-- Disk Drive: <code>MQ01ABF050</code>
+- Disk Drive Model: <code>MQ01ABF050</code>
 - SN FULL: <code>Z371C6IIT Y84 HDKCB06T0A01 T</code>
-- Disk Drive Date: <code>Dec 07 2013</code>
 - Type: <code>2.5" HDD</code>
 
 ## Wipe info
