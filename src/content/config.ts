@@ -16,6 +16,8 @@ const blogSchema = z.object({
 const hddSchema = z.object({
     serial: z.string(),
     make: z.string(),
+    model: z.string(),
+    badge: z.string().optional(),
     capacity: z.string(),
     type: z.string(),
     reportDate: z.coerce.date(),

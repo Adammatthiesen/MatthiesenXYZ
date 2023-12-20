@@ -1,6 +1,7 @@
 ---
 serial: Z371C6IIT
-make: TOSHIBA
+make: Toshiba
+model: MQ01ABF050
 capacity: 500Gb
 type: 2.5" HDD
 reportDate: Dec 19 2023
@@ -8,9 +9,8 @@ reportDate: Dec 19 2023
 
 ## Drive Details
 
-- Disk Drive Model: <code>MQ01ABF050</code>
-- SN FULL: <code>Z371C6IIT Y84 HDKCB06T0A01 T</code>
-- Type: <code>2.5" HDD</code>
+- Disk Drive: <code>MQ01ABF050</code>
+- SN: <code>Z371C6IIT</code>
 
 ## Wipe info
 
