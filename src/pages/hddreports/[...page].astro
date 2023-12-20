@@ -1,11 +1,14 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HddHorizontalCard from "../components/HddHorizontalCard.astro";
-import { getCollection, getEntry, getEntries } from "astro:content";
-import { post } from "jquery";
-const hddreportlist = await getCollection("hddreports");
-hddreportlist.sort((a, b) => b.data.reportDate.valueOf() - a.data.reportDate.valueOf());
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HddHorizontalCard from "../../components/cards/HddHorizontalCard.astro";
+import { getCollection } from "astro:content";
 
+export async function getStaticPaths({ paginate }){
+  const hddreportlist = await getCollection("hddreports");
+  hddreportlist.sort((a, b) => b.data.reportDate.valueOf() - a.data.reportDate.valueOf());
+  return paginate(hddreportlist);
+}
+const { page } = Astro.props;
 ---
 
 <BaseLayout title="HDD Reports" sideBarActiveItemID="hddreports" >
@@ -17,7 +20,7 @@ hddreportlist.sort((a, b) => b.data.reportDate.valueOf() - a.data.reportDate.val
     </div>
     <div class="divider my-0" />
     <div class="">
-        { hddreportlist.map((post) => (
+        { page.data.map((post) => (
           <>
           <HddHorizontalCard
             title={post.data.make + " " + post.data.model + " ~ " + post.data.serial}

@@ -3,7 +3,6 @@ title: "Support Center Information & Progress"
 description: "IT Support Center - Progress updates and information regarding release date."
 pubDate: "Dec 17 2023"
 heroImage: "/favicon.png"
-updatedDate: "Dec 18 2023"
 blogbadge: "Blog Post"
 projectbadge: "Ongoing Project"
 ---

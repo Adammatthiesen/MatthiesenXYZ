@@ -1,4 +1,5 @@
 import { dateTimeFormat } from "astro/dist/core/logger/core";
+import { ZodDate } from "astro/zod";
 import { z, defineCollection } from "astro:content";
 
 const blogSchema = z.object({

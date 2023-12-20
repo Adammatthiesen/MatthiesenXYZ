@@ -11,6 +11,9 @@ const { title, description, pubDate, updatedDate, heroImage, badge, blogbadge, t
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("ll");
 import { Image } from "@astrojs/image/components";
+
+
+
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
@@ -35,8 +38,8 @@ import { Image } from "@astrojs/image/components";
       {tutorialbadge && <div class="badge badge-secondary bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{tutorialbadge}</div>}
       {projectbadge && <div class="badge badge-secondary bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{projectbadge}</div>}
       <br>
-      Published: {pubDate && <time>{displayDate}</time>}
-      {updatedDate && (<div>{" "}Last Modified: <time>{updatedDate}</time>{" "}</div>)}
+      Published: {pubDate && <time>{displayDate}</time>}<br>
+      <div class="text-xs">Last Modified: <time>{updatedDate}</time></div>
       <div class="divider my-2"></div>
       <slot />
     </article>

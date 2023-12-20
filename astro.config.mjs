@@ -2,12 +2,13 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
-
-// https://astro.build/config
+import { remarkModifiedTime } from './remark-modified-time.mjs';
 import image from "@astrojs/image";
 
-// https://astro.build/config
 export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkModifiedTime],
+  },
   site: 'https://matthiesen.xyz',
   integrations: [mdx(), sitemap(), tailwind(), image(
     {

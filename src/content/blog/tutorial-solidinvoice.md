@@ -3,7 +3,6 @@ title: "SolidInvoice - Setup Tutorial"
 description: "SolidInvoice Docker Setup BASIC, Since there wasnt a good Tutorial for how to install SolidInvoice into a docker container I created my own."
 pubDate: "Dec 18 2023"
 heroImage: "/solidinvoice.png"
-#updatedDate: "Dec 12 2023"
 badge: "FOSS"
 tutorialbadge: "Tutorial"
 ---
