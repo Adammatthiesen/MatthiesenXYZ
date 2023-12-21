@@ -4,7 +4,9 @@ import HorizontalCard from "../../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
   posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(posts, { pageSize: 10 });
 }
@@ -13,9 +15,11 @@ const { page } = Astro.props;
 ---
 
 <BaseLayout title="Blog" sideBarActiveItemID="blog">
+  <div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Blog</div>
+    <div class="text-3xl w-full font-bold"><center>Blog & Tutorials</center></div>
   </div>
+  <div class="divider my-0" />
 
   {
     page.data.length === 0 ? (
@@ -34,6 +38,9 @@ const { page } = Astro.props;
               url={"/blog/" + post.slug}
               target="_self"
               badge={post.data.badge}
+              blogbadge={post.data.blogbadge}
+              tutorialbadge={post.data.tutorialbadge}
+              projectbadge={post.data.projectbadge}
               tags={post.data.tags}
             />
             <div class="divider my-0" />
@@ -82,5 +89,6 @@ const { page } = Astro.props;
         <div />
       )
     }
+  </div>
   </div>
 </BaseLayout>

@@ -1,7 +1,15 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
-import { BlogSchema } from "../../content/config";
+import { type CollectionEntry, getCollection } from "astro:content";
+import type { BlogSchema } from "../../content/config";
 import PostLayout from "../../layouts/PostLayout.astro";
+import dayjs from 'dayjs';
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import LocalizedFormat from "dayjs/plugin/localizedFormat";
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.extend(LocalizedFormat)
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("blog");
@@ -17,16 +25,25 @@ interface Props {
 
 const { entry } = Astro.props;
 const post: BlogSchema = entry.data;
-const { Content } = await entry.render();
+const { Content, remarkPluginFrontmatter } = await entry.render();
+const tz = "America/Los_Angeles"
+const lastModified = dayjs(remarkPluginFrontmatter.lastModified)
+  .utc()
+  .local()
+  .tz()
+  .format('LL');
 ---
 
-<PostLayout
+<PostLayout 
   title={post.title}
   description={post.description}
   pubDate={post.pubDate}
   heroImage={post.heroImage}
-  updatedDate={post.updatedDate}
+  updatedDate={lastModified} 
   badge={post.badge}
+  blogbadge={post.blogbadge}
+  tutorialbadge={post.tutorialbadge}
+  projectbadge={post.projectbadge}
   tags={post.tags}
 >
   <Content />

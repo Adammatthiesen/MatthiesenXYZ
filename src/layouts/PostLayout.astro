@@ -3,39 +3,31 @@ import { type BlogSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import { Image } from "astro:assets";
 
 export interface Props extends BlogSchema {}
 
-const { title, description, pubDate, updatedDate, heroImage, badge, tags = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, 
+  heroImage, badge, blogbadge, tutorialbadge, 
+  projectbadge, tags = [] } = Astro.props;
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("ll")
-import { Image } from "astro:assets";
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}>
-  <main class="md:flex md:justify-center">
-    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
-      {heroImage && <Image width={750} height={422} format="webp" src={heroImage} alt={title} class="w-full mb-6" />}
+<BaseLayout title={title} description={description} image={heroImage} sideBarActiveItemID="blog">
+  <main class="relative overflow-x-auto flex flex-col w-[1500px]">
+    <article class="prose prose-lg max-w-[1500px] prose-img:mx-auto">
+      {heroImage && <Image width={750} height={422} format="webp" src={heroImage} alt={title} class="max-w-[750px] mb-6" />}
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
-      <br />
-      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
-      {
-        tags &&
-          tags.map((tag) => (
-            <a href={`/blog/tag/${tag}`} class="badge badge-outline ml-2 no-underline">
-              {tag}
-            </a>
-          ))
-      }
-      {
-        updatedDate && (
-          <div>
-            {" "}
-            Last updated on <time>{updatedDate}</time>{" "}
-          </div>
-        )
-      }
+      <br>
+      {badge && <div class="badge badge-secondary bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{badge}</div>}
+      {blogbadge && <div class="badge badge-secondary bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{blogbadge}</div>}
+      {tutorialbadge && <div class="badge badge-secondary bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{tutorialbadge}</div>}
+      {projectbadge && <div class="badge badge-secondary bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{projectbadge}</div>}
+      {tags && tags.map((tag) => (<a href={`/blog/tag/${tag}`} class="badge badge-outline ml-2 no-underline">{tag}</a>))}
+      <br>
+      Published: {pubDate && <time>{displayDate}</time>}<br>
+      <div class="text-xs">Last Modified: <time>{updatedDate}</time></div>
       <div class="divider my-2"></div>
       <slot />
     </article>

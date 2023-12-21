@@ -1,0 +1,73 @@
+---
+title: "SolidInvoice - Setup Tutorial"
+description: "SolidInvoice Docker Setup BASIC, Since there wasnt a good Tutorial for how to install SolidInvoice into a docker container I created my own."
+pubDate: "Dec 18 2023"
+heroImage: "/solidinvoice.png"
+badge: "FOSS"
+tutorialbadge: "Tutorial"
+---
+
+Below is my docker compose script used in Portainer(Can also be used as regular docker-compose.yml)  Ive left the cron scheduler uncommented for installation, please uncomment when the web gui asks you to at the end. 
+
+**CONTAINER NAMES ARE IMPORTANT HERE, AS YOU LINK SOLIDINVOICE AND MYSQL BY NAME NOT IP!!!!**
+
+During installation at the database setup screen use the mysql container name displayed in the compose script, which can be verified by typing the <code>docker ps</code> command
+
+Instead of repeating already good documentation just follow the normal installation process for the rest of your install.  Only difference is instead of manually setting up your web server this is presetup, all you need to do is connect and initilize your database.  Of course with this tutorial if your already running a different MySQL Server feel free to just link into that.
+- SoldInvoice Documentation: [Installation Tutorial](https://docs.solidinvoice.co/en/latest/guide/installation.html)
+
+### Docker Compose script
+
+```yaml
+---
+version: '3'
+
+services:
+  solidinvoice:
+    image: solidinvoice/solidinvoice:latest
+    container_name: solidinvoice-app
+    ports:
+      - "8889:80"
+    environment:
+      - DATABASE_URL=mysql://solidinvoice:solidinvoice@solidinvoice-mysql/solidinvoice
+      - MAILER_URL=smtp://mailcatcher:1025
+    depends_on:
+      - mysql
+      - mailcatcher
+    networks:
+      - solidinvoice-network
+#    labels:   ### stop stack and uncomment this section when web-installer asks you to setup cron job.
+#      - "net.reddec.scheduler.cron=0/5 * * * *"
+#      - "net.reddec.scheduler.exec=php /var/www/html/bin/console cron:run -e prod -n"
+
+  mysql:
+    image: mysql:5.7
+    container_name: solidinvoice-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=solidinvoice
+      - MYSQL_USER=solidinvoice
+      - MYSQL_PASSWORD=solidinvoice
+    networks:
+      - solidinvoice-network
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: solidinvoice-mailcatcher
+    ports:
+      - "1080:1080"
+    networks:
+      - solidinvoice-network
+
+### stop stack and uncomment this section when web-installer asks you to setup cron job.
+#  scheduler:
+#    image: ghcr.io/reddec/compose-scheduler:1.0.0
+#    container_name: solidinvoice-cron-scheduler
+#    restart: unless-stopped
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+networks:
+  solidinvoice-network:
+  ```
+  

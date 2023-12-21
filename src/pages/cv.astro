@@ -4,54 +4,57 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Profile</div>
   </div>
 
+  <div class="divider my-0" />
   <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p>I am a Self-Employed IT Guy and motivated individual ready for a new challenge everyday!</p>
+    <br />
+    <p>I have experience with computer networking, software configuration, web development, hardware repair, as well as various types of server experience.</p>
+    <p>I am a well versed Information Technology Specialist, with skills that include Ubiquity Unifi Technology, practice with various Virtual Machine platforms including; VMware, XCP-ng, Hyper-V, TrueNAS, Proxmox-VE, Azure AD, and Amazon EC2.</p>
+    <p>Most of my previous expirence included working with Office 365(Now Microsoft 365) as well as many other different platforms both Closed and Open Source. Most Recently I have been integrating more and more Open Source projects into my everyday life, and projects for clients i work with to save them money where they can safely deploy the Open Source Alternative.</p>
   </div>
 
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Education</div>
   </div>
 
+  <div class="divider my-0" />
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
+      title="Pierce County Skills Center (PCSC)"
+      subtitle="2015-2016 at Pierce County Skills Center, Puyallup, Washington, USA"
+      />
+      <p>PC Networking & Hardware Repair (PC Pro Certified)</p>
+      PC Repair, PC Building, 3D Printing, Windows Server Management, Linux installation, TestOut Labsim The PC Networking & Hardware Repair program introduces students to a broad understanding of the installation and management of computer networks. Students also learn to troubleshoot, diagnose, and repair computer hardware. This program is aligned to industry-recognized standards.
   </div>
 
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Experience</div>
   </div>
 
+  <div class="divider my-0" />
   <div class="time-line-container mb-10">
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="IT Contractor | Upwork"
+      subtitle="From June 2021 To Present, Global"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+    I offer IT Support and Network Administration Services through my <a href="https://rebrand.ly/ad14c7">Upwork Profile</a>.
     </TimeLineElement>
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="Independent Technician | HelloTech"
+      subtitle="From December 2020 To July 2022, Greater Seattle Area, Washington, USA"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+    HelloTech provides nationwide, on-demand, expert tech and IT support, including Computer Repair, WiFi Services, Smart Home Installations, TV Mountings, and more. Brands like Comcast, Dwelo, and Walmart, as well as millions of customers like you, trust HelloTech to keep them up and running across all their devices.
     </TimeLineElement>
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      title="Help Desk Technician | Your Business Solutions, INC. (YBS)"
+      subtitle="From February 2018 To Auguest 2018, Remote, USA"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+    As a YBS Help Desk Technician, I have experience with Microsoft Office 365(including Word, Excel, OneNote, Teams, Sharepoint, OneDrive, AzureAD, Skype for Business, Visio), ConnectWise Manage/Automate/ScreenConnect, Crexendo VOIP, Counterpath Bria, Ubiquiti Networking, VMware vSphere, VMware ESXi, VMware Workstation Pro 14, Datto Backup, Remote Desktop, Some graphic design, and of course Customer Service.
     </TimeLineElement>
   </div>
 
@@ -59,12 +62,13 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Certifications</div>
   </div>
 
+  <div class="divider my-0" />
   <ul class="list-disc mx-6 mb-10 grid gap-2">
     <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
+      TestOut PCPro
     </li>
     <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
+      <a href="https://portal.3cx.com/share/certificate/w9XQneM8HY" target="_blank"> 3cx Basic (Link)</a>
     </li>
   </ul>
 
@@ -72,21 +76,24 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Skills</div>
   </div>
 
+  <div class="divider my-0" />
   <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
+    <li>Computer Repair</li>
+    <li>Computer Networking</li>
+    <li>Customer Service Expert</li>
+    <li>Computer Management</li>
+    <li>Independently Driven</li>
+    <li>Organzied</li>
+    <li>Web Development</li>
+    <li>Quick Learner</li>
+    <li>3cx Phone System</li>
+    <li>Virtual Machine Technology</li>
+    <li>ConnectWise</li>
+    <li>Office 365 (Microsoft 365)</li>
+    <li>Ubiquiti Unifi</li>
+    <li>Windows</li>
+    <li>MacOS</li>
+    <li>Linux</li>
   </ul>
+</div>
 </BaseLayout>

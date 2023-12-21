@@ -1,0 +1,35 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { hddSchema } from '../../content/config';
+import HddLayout from '../../layouts/HddLayout.astro';
+import dayjs from 'dayjs';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+
+export async function getStaticPaths() {
+    const hddEntries = await getCollection('hddreports');
+    return hddEntries.map(entry => ( { 
+        params: { slug: entry.slug }, props: { entry },
+    } ));
+}
+
+interface Props {
+    entry: CollectionEntry<"hddreports">;
+}
+
+const { entry } = Astro.props;
+const post : hddSchema = entry.data;
+const { Content } = await entry.render();
+
+dayjs.extend(localizedFormat);
+const displayDate = dayjs(post.reportDate).format("ll");
+---
+
+<HddLayout 
+    serial={post.serial}
+    make={post.make}
+    model={post.model}
+    reportDate={post.reportDate}
+    capacity={post.capacity}
+    type={post.type}>
+    <Content />
+</HddLayout>
