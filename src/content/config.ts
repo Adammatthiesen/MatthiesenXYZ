@@ -1,5 +1,3 @@
-import { dateTimeFormat } from "astro/dist/core/logger/core";
-import { ZodDate } from "astro/zod";
 import { z, defineCollection } from "astro:content";
 
 const blogSchema = z.object({
@@ -13,7 +11,11 @@ const blogSchema = z.object({
     blogbadge: z.string().optional(),
     tutorialbadge: z.string().optional(),
     projectbadge: z.string().optional(),
+    tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
+        message: 'tags must be unique',
+    }).optional(),
 });
+
 const hddSchema = z.object({
     serial: z.string(),
     make: z.string(),

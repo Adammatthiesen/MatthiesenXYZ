@@ -1,7 +1,8 @@
 ---
-import SideBarFooter from "./SideBarFooter.astro";
-import { Image } from "@astrojs/image/components";
-import SideBarMenu from "./SideBarMenu.astro";
+import SideBarFooter from "../base/SideBarFooter.astro";
+import { Image } from "astro:assets";
+import SideBarMenu from "../base/SideBarMenu.astro";
+const { sideBarActiveItemID } = Astro.props;
 ---
 
 <div class="drawer-side z-40">
@@ -11,12 +12,12 @@ import SideBarMenu from "./SideBarMenu.astro";
       <a href="/">
         <div class="avatar transition ease-in-out hover:scale-[102%] block m-auto">
           <div class="w-[10rem]">
-            <Image class="mask" aspectRatio="1:1" format="webp" width={300} height={300} src="/favicon.png" alt="MXYZ Logo" />
+            <Image class="mask" format="webp" width={300} height={300} src="/favicon.png" alt="MXYZ Logo" />
           </div>
         </div>
       </a>
     </div>
-    <SideBarMenu />
+    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
     <SideBarFooter />
   </aside>
 </div>

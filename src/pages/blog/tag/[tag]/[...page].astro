@@ -1,26 +1,33 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import HorizontalCard from "../../components/HorizontalCard.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import HorizontalCard from "@components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection('blog', ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
+  const all_posts = await getCollection("blog");
+  const all_tags = all_posts.flatMap((post) => {
+    return post.data.tags || [];
   });
-  posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-  return paginate(posts, { pageSize: 10 });
+
+  return all_tags.flatMap((tag) => {
+    const filtred_posts = all_posts.filter((post) => {
+      return post.data.tags?.includes(tag);
+    });
+    return paginate(filtred_posts, {
+      params: { tag },
+      pageSize: 10,
+    });
+  });
 }
 
 const { page } = Astro.props;
+const params = Astro.params;
 ---
 
-<BaseLayout title="Blog" sideBarActiveItemID="blog">
-  <div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
+<BaseLayout title={"Blog - " + params.tag} sideBarActiveItemID="blog">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold"><center>Blog & Tutorials</center></div>
+    <div class="text-3xl w-full font-bold">Blog - {params.tag}</div>
   </div>
-  <div class="divider my-0" />
-
   {
     page.data.length === 0 ? (
       <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
@@ -38,9 +45,6 @@ const { page } = Astro.props;
               url={"/blog/" + post.slug}
               target="_self"
               badge={post.data.badge}
-              blogbadge={post.data.blogbadge}
-              tutorialbadge={post.data.tutorialbadge}
-              projectbadge={post.data.projectbadge}
               tags={post.data.tags}
             />
             <div class="divider my-0" />
@@ -89,6 +93,5 @@ const { page } = Astro.props;
         <div />
       )
     }
-  </div>
   </div>
 </BaseLayout>
