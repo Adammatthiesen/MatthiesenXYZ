@@ -9,8 +9,9 @@ reportDate: Dec 19 2023
 
 # Drive Details
 
-- Disk Drive: <code>MQ01ABF050</code>
-- SN: <code>Z371C6IIT</code>
+- Disk Drive: ```MQ01ABF050```
+- SN: ```Z371C6IIT```
+- Manufacture Date: ```December 07, 2013```
 
 ## Wipe info
 

@@ -9,8 +9,9 @@ reportDate: Dec 19 2023
 
 # Drive Details
 
-- Disk Drive: <code>MAKE - MODEL</code>
-- SN: <code>XXX</code>
+- Disk Drive: ```MAKE - MODEL```
+- SN: ```XXX```
+- Manufacture Date: ```MMMM DD, YYYY```
 
 ## Wipe info
 
