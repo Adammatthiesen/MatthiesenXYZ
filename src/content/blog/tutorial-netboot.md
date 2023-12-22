@@ -8,6 +8,16 @@ projectbadge: "Ongoing Project"
 tutorialbadge: "Tutorial"
 ---
 
+### Table of Contents
+
+[Introduction](#introduction)  
+[Getting Started (Docker, The Easy Way)](#getting-started-docker-the-easy-way)  
+[DEFUALT names for the netboot.xyz iPxE files](#the-following-are-the-defualt-names-for-the-netbootxyz-files)  
+[Booting other operating systems, Editing the Menu](#booting-other-operating-systems-editing-the-menu)  
+[Sources](#sources)
+
+## Introduction
+
 This post is about my exploration into how to Netboot using Netboot.xyz, but as I quickly realized, Netboot.xyz is not as simple as it first seems.  Its based on ipxe.org's codebase and technology.  In fact, most of the resources on ipxe.org are directly relevent in Netbootxyz, from menu options and formating, to the way you boot operating systems.  The Documentation at the ipxe website helped me learn more about the process of how network booting with ipxe really worked, as well as they provide examples of how to utilize their software.  Which the reason I learned about them in the first place was after I first deployed Netboot.xyz for the first time and attempted a network boot, and before netboot.xyz launched there was the website for ipxe.org!  My first deployment was using docker, which worked quite well.
 
 Because there are a ton of types of routers, in this post I will not be explaininng how to setup your router for network booting.  But a simple google search should be able to help you figure that out, as there are many ways to setup a network boot environment.  Including offloading your DHCP server to allow different options outside of some routers functions.  Again far out of the scope of this post.

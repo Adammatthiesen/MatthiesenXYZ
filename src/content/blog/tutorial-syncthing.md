@@ -6,7 +6,16 @@ heroImage: "/syncthing.png"
 badge: "FOSS"
 tutorialbadge: "Tutorial"
 ---
+
 <img src="https://status-monitor.basestation.space/api/badge/22/status?label=BSN-SyncThing-Relay+&style=for-the-badge">
+
+### Table of Contents
+
+[Introduction](#introduction)  
+[Syncthing Relay & Discovery Server (Docker)](#getting-started-with-relay-discovery-server-docker)
+[Syncthing Node Server (Docker)](#setting-up-a-node-docker)
+
+## Introduction
 
 My Tutorial is going to be a little backwards from the standard method, as I am going to show you how to setup a Relay, and Discovery server first, as this can be configured as just a client to the Master project to assist growth for a great Open Source Project that is free for us to use.  I personally run a Synthing Relay/Discovery Server that runs 24/7 as well as a Node for some data and file syncs.
 

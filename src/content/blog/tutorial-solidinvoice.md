@@ -7,7 +7,7 @@ badge: "FOSS"
 tutorialbadge: "Tutorial"
 ---
 
-Below is my docker compose script used in Portainer(Can also be used as regular docker-compose.yml)  Ive left the cron scheduler uncommented for installation, please uncomment when the web gui asks you to at the end. 
+Below is my docker compose script used in Portainer(Can also be used as regular docker-compose.yml)  Ive left the cron scheduler uncommented for installation, please uncomment when the web gui asks you to at the end.
 
 **CONTAINER NAMES ARE IMPORTANT HERE, AS YOU LINK SOLIDINVOICE AND MYSQL BY NAME NOT IP!!!!**
 
