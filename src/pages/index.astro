@@ -69,7 +69,7 @@ const last_posts = posts.slice(0, 3);
   <div>
     <div class="text-3xl font-bold mb-2">Get IT Support</div>
   </div>
-  <div class="divider my-0" />
+  <div class="divider my-1" />
   <GetSupportCard
     title="IT Help Desk & Support Center"
     img="/mxyz-support-banner-whitetext.png"
@@ -85,7 +85,7 @@ const last_posts = posts.slice(0, 3);
   <div>
     <div class="text-3xl font-bold mb-2">External Projects</div>
   </div>
-  <div class="divider my-0" />
+  <div class="divider my-1" />
   <HorizontalCard
     title="Matthiesen Photography"
     img="/photography.jpg"
@@ -114,7 +114,7 @@ const last_posts = posts.slice(0, 3);
   </div>
   {
     last_posts.map((post) => (
-        <div class="divider my-0" />
+        <div class="divider my-1" />
         <HorizontalCard
           title={post.data.title}
           img={post.data.heroImage}

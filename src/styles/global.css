@@ -1,3 +1,8 @@
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
 }
+.scooootch{
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+}
