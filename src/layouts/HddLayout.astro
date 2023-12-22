@@ -6,7 +6,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 
 export interface Props extends hddSchema {}
 
-const { serial, make, model, type, reportDate, capacity } = Astro.props;
+const { serial, make, model, type, reportDate, capacity, manuDate, pdf} = Astro.props;
 
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(reportDate).format("ll");
@@ -22,7 +22,23 @@ const displayDate = dayjs(reportDate).format("ll");
       <br>
       Report Date: <code>{reportDate && <time>{displayDate}</time>}</code>
       <div class="divider my-2"></div>
-      <slot />
+      <h1>Drive Details</h1>
+      - Disk Drive: <code>{make + " - " + model}</code>
+      <br>
+      - SN: <code>{serial}</code>
+      <br>
+      - Manufacture Date: <code><time>{manuDate}</time></code>
+      <h2>Wipe Info</h2>
+      - <i>Wipe Completed with nwipe v35+</i>
+      <br>
+      <br>
+      {pdf &&<a href={"/hddreports/" + serial + ".pdf"}>Download a Copy</a>
+      <object data={"/hddreports/" + serial + ".pdf"} type="application/pdf" width="100%" height="700px">
+        <embed width="100%" src={"/hddreports/" + serial + ".pdf"}>
+            <p>This browser does not support PDFs or Want a copy for yourself? Please download the PDF to view it: <a href={"/hddreports/" + serial + ".pdf"}>Download PDF</a>.</p>
+        </embed>
+        <slot />
+    </object>}
     </article>
   </main>
 </BaseLayout>

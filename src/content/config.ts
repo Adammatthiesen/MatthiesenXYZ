@@ -24,6 +24,8 @@ const hddSchema = z.object({
     capacity: z.string(),
     type: z.string(),
     reportDate: z.coerce.date(),
+    manuDate: z.string().optional(),
+    pdf: z.boolean().optional(),
 });
 
 export type BlogSchema = z.infer<typeof blogSchema>;

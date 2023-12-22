@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { hddSchema } from '../../content/config';
+import { type hddSchema } from '../../content/config';
 import HddLayout from '../../layouts/HddLayout.astro';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
@@ -30,6 +30,9 @@ const displayDate = dayjs(post.reportDate).format("ll");
     model={post.model}
     reportDate={post.reportDate}
     capacity={post.capacity}
-    type={post.type}>
+    type={post.type}
+    manuDate={post.manuDate}
+    pdf={post.pdf}
+    >
     <Content />
 </HddLayout>
