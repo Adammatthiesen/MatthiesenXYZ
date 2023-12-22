@@ -72,7 +72,7 @@ const { page } = Astro.props;
           <HddHorizontalCard
             title={post.data.make + " " + post.data.model + " ~ S/N: " + post.data.serial}
             desc={"Report Date: " + post.data.reportDate.toDateString()}
-            badge={post.data.capacity + " - " + post.data.type}
+            badge={post.data.capacity + " - " + post.data.size + " " + post.data.type}
             url={"/hddreports/" + post.slug}
             target=""
             isSSD={post.data.isSSD}

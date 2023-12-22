@@ -21,6 +21,7 @@ const hddSchema = z.object({
         model: z.string(),
         badge: z.string().optional(),
         capacity: z.string(),
+        size: z.string(),
         type: z.string(),
         reportDate: z.coerce.date(),
         manuDate: z.string().optional(),
@@ -29,7 +30,7 @@ const hddSchema = z.object({
     });
 
 export type BlogSchema = z.infer<typeof blogSchema>;
-export type StoreSchema = z.infer<typeof hddSchema>;
+export type HddSchema = z.infer<typeof hddSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
 const hddreportsCollection = defineCollection({ schema: hddSchema });

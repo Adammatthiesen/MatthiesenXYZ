@@ -1,12 +1,12 @@
 ---
-import { type hddSchema } from "../content/config";
+import type { HddSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 
-export interface Props extends hddSchema {}
+export interface Props extends HddSchema {}
 
-const { serial, make, model, type, reportDate, capacity, manuDate, pdf} = Astro.props;
+const { serial, make, model, type, size, reportDate, capacity, manuDate, pdf} = Astro.props;
 
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(reportDate).format("ll");
@@ -16,7 +16,7 @@ const displayDate = dayjs(reportDate).format("ll");
   <main class="relative overflow-x-auto flex flex-col w-[1500px]">
     <article class="prose prose-lg max-w-[1500px] prose-img:mx-auto">
       <h1 class="title relative max-w-[1500px] my-2 text-4xl font-bold">{make + " " + model + " ~ S/N: " + serial}</h1>
-      Drive Type: <code>{type}</code>
+      Drive Type: <code>{size} {type}</code>
       <br>
       Drive Capacity: <code>{capacity}</code> 
       <br>
