@@ -15,11 +15,12 @@ const { page } = Astro.props;
 ---
 
 <BaseLayout title="Blog" sideBarActiveItemID="blog">
-  <div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold"><center>Blog & Tutorials</center></div>
-  </div>
-  <div class="divider my-0" />
+  <div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
+    <div class="items-center">
+      <br> 
+      <div class="text-5xl font-bold"><center>Blog & Tutorials</center></div>
+      <br>
+    </div>
 
   {
     page.data.length === 0 ? (
@@ -31,6 +32,7 @@ const { page } = Astro.props;
       <ul>
         {page.data.map((post) => (
           <>
+            <div class="divider my-0" />
             <HorizontalCard
               title={post.data.title}
               img={post.data.heroImage}
@@ -43,7 +45,6 @@ const { page } = Astro.props;
               projectbadge={post.data.projectbadge}
               tags={post.data.tags}
             />
-            <div class="divider my-0" />
           </>
         ))}
       </ul>
@@ -51,6 +52,7 @@ const { page } = Astro.props;
   }
 
   <div class="flex justify-between">
+    <div class="divider my-0" />
     {
       page.url.prev ? (
         <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">

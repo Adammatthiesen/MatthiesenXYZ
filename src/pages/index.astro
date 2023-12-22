@@ -39,8 +39,8 @@ const last_posts = posts.slice(0, 3);
 <br>
 
 <!-- Second Section -->
-  <div class="relative overflow-x-auto flex flex-col bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
-    <div class="py-2">
+  <div class="relative p-2 overflow-x-auto flex flex-col bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 mt-5">
+    <div class="py-2 ">
       <text class="text-lg">
         This website is the Hub of my various projects, as well as a single place for me to show off what makes me who I am.  Ever since I was a small kid I have migrated towards technology over sports, card games, and other normal 2000 era kid stuff.
         After years of showing intrest in technology I built my first computer with my Dad at the age of Five.  After that I continued into learning more about the computer at my hands, it started simnple as gaming, then running Minecraft servers, and eventually...
@@ -65,7 +65,7 @@ const last_posts = posts.slice(0, 3);
   </div>
 
 <!-- Get Support Card -->
-  <div class="relative pd-2 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
+  <div class="relative pd-2 p-2 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 mt-5">
   <div>
     <div class="text-3xl font-bold mb-2">Get IT Support</div>
   </div>
@@ -81,7 +81,7 @@ const last_posts = posts.slice(0, 3);
 </div>
 
 <!-- External Projects Section -->
-<div class="relative pd-2 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
+<div class="relative pd-2 p-2 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-700 dark:bg-gray-800 mt-5">
   <div>
     <div class="text-3xl font-bold mb-2">External Projects</div>
   </div>
@@ -108,13 +108,13 @@ const last_posts = posts.slice(0, 3);
 -->
 
 <!-- Blog Section -->
-<div class="pd-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 pb-12 mt-5">
+<div class="pd-2 bg-white p-2 border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
   <div>
     <div class="text-3xl font-bold mb-2">Latest from my blog</div>
   </div>
-  <div class="divider my-0" />
   {
     last_posts.map((post) => (
+        <div class="divider my-0" />
         <HorizontalCard
           title={post.data.title}
           img={post.data.heroImage}
@@ -126,7 +126,6 @@ const last_posts = posts.slice(0, 3);
           tutorialbadge={post.data.tutorialbadge}
           projectbadge={post.data.projectbadge}
         />
-        <div class="divider my-0" />
     ))
   }
 </div>
