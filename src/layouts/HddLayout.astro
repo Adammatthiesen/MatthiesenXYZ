@@ -10,6 +10,7 @@ const { serial, make, model, type, size, reportDate, capacity, manuDate, pdf} = 
 
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(reportDate).format("ll");
+const manudisplayDate = dayjs(manuDate).format("ll");
 ---
 
 <BaseLayout sideBarActiveItemID="hddreports" title={make + " " + model + " ~ " + serial} description={capacity}>
@@ -27,7 +28,7 @@ const displayDate = dayjs(reportDate).format("ll");
       <br>
       - SN: <code>{serial}</code>
       <br>
-      - Manufacture Date: <code><time>{manuDate}</time></code>
+      - Manufacture Date: <code>{manuDate && <time>{manudisplayDate}</time> ? manudisplayDate : "Not Available"}</code>
       <h2>Wipe Info</h2>
       - <i>Wipe Completed with nwipe v35+</i>
       <br>

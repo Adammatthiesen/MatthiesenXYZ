@@ -24,7 +24,7 @@ const hddSchema = z.object({
         size: z.string(),
         type: z.string(),
         reportDate: z.coerce.date(),
-        manuDate: z.string().optional(),
+        manuDate: z.coerce.date().optional(),
         pdf: z.boolean().optional(),
         isSSD: z.boolean(),
     });
