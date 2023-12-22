@@ -14,6 +14,7 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.vsgitbuild
 
 # macOS-specific files
 .DS_Store
