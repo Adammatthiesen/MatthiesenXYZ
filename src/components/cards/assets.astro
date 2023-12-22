@@ -1,0 +1,23 @@
+---
+ import { Image } from 'astro:assets';
+ import '../../styles/filters.css'
+
+interface Props {
+   imagePath: string;
+   width: number;
+   height: number;
+}
+ 
+const { imagePath, width, height} = Astro.props;
+const images = import.meta.glob('/src/assets/*.{jpeg,jpg,png,gif,svg}')
+---
+
+<div class="card text-xl font-bold">
+    <Image 
+        src={images[imagePath]()}
+        width={width} 
+        alt="asset"
+        height={height}
+        class="hddreport-filter-white"
+        />
+</div>

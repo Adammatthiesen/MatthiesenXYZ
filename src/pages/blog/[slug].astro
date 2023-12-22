@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import type { BlogSchema } from "../../content/config";
-import PostLayout from "../../layouts/PostLayout.astro";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 import dayjs from 'dayjs';
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
@@ -34,7 +34,7 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified)
   .format('LL');
 ---
 
-<PostLayout 
+<BlogPostLayout 
   title={post.title}
   description={post.description}
   pubDate={post.pubDate}

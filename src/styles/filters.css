@@ -1,0 +1,4 @@
+.hddreport-filter-white{
+    padding: 0.4rem;
+    filter: invert(95%) sepia(100%) saturate(22%) hue-rotate(318deg) brightness(104%) contrast(107%);
+}

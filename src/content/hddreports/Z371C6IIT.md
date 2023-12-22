@@ -7,4 +7,5 @@ type: 2.5" HDD
 reportDate: Dec 19 2023
 manuDate: Dec 07 2013
 pdf: false
+isSSD: false
 ---
