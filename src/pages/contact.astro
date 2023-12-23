@@ -1,0 +1,52 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const errors = { name: "", email: "", message: "" };
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const message = data.get("message");
+    if (typeof name !== "string" || name.length < 1) {
+      errors.name += "Please enter a username. ";
+    }
+    if (typeof message !== "string" || message.length < 12) {
+      errors.message += "Message must be at least 12 characters. ";
+    }
+    // Do something with the data
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+
+
+---
+<BaseLayout title="Astro Contact Form">
+    <main>
+        <h1>Contact</h1>
+        <form action=“https://usebasin.com/f/79245cca5e1f” method=“POST”>
+          <label>
+            Name:
+            <input type="text" name="name" required/>
+          </label>
+          {errors.name && <p>{errors.name}</p>}
+          <label>
+            Email:
+            <input type="email" name="email" required/>
+          </label>
+          {errors.email && <p>{errors.email}</p>}
+          <label>
+            Message:
+            <textarea id=“message” name=“message” rows=“5" cols=“33” required minlength="12"/>
+          </label>
+          {errors.message && <p>{errors.message}</p>}
+          <button>Submit</button>
+        </form>
+
+
+    </main>
+  </layout>
