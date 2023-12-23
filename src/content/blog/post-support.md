@@ -15,10 +15,17 @@ This project is intended to become my new IT Support Center & Help Desk for me t
 
 I will also be created a Basic setup tutorial that I will link below when it is ready,  As well as a Tutorial for setting up the billing/invoice system I am using... both the links are below.
 
-- Tutorial: [UVDesk OpenSource - Setup Tutorial](#)
+- Tutorial: [osTicket OpenSource - Setup Tutorial](#)
 - Tutorial: [SolidInvoice - Setup Tutorial](/blog/tutorial-solidinvoice)
 
-## Update Checkins
+## Project Check-Ins
+
+### Dec. 23rd 2023
+
+- I ended up having to give up with UVDesk, as it had issues with emails.  Installed and setup osTicket in a breeze.  Will create a docker tutorial antoher day.  but for now its working.
+- Further testing and integration into new site feature. *The Get Support Button on the Sidebar that leads to a contact form*
+- Website form integration is using [UseBasin](https://usebasin.com) which pipes using email into osTicket.  Simplifying osTicket's integration into my website for a front end *Managed* ticket filter.  Tickets are presented to the Agent from the usebasin email instead of the users email, allowing quick identication of the Webform based tickets.
+- Soldinvoice configuration stands as is with no issues.
 
 ### Dec. 18th 2023
 
