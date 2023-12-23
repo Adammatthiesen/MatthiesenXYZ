@@ -27,7 +27,7 @@ const displayDate = dayjs(pubDate).format("ll")
       {tags && tags.map((tag) => (<a href={`/blog/tag/${tag}`} class="badge badge-outline ml-2 no-underline">{tag}</a>))}
       <br>
       Published: {pubDate && <time>{displayDate}</time>}<br>
-      <div class="text-xs">Last Modified: <time>{updatedDate}</time></div>
+      <!--div class="text-xs">Last Modified: <time>{updatedDate}</time></div-->
       <div class="divider my-2"></div>
       <slot />
     </article>
