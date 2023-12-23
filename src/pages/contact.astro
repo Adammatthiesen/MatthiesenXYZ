@@ -1,52 +1,33 @@
 ---
+import Contactform from "@components/cards/contactform.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-
-const errors = { name: "", email: "", message: "" };
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const name = data.get("name");
-    const email = data.get("email");
-    const message = data.get("message");
-    if (typeof name !== "string" || name.length < 1) {
-      errors.name += "Please enter a username. ";
-    }
-    if (typeof message !== "string" || message.length < 12) {
-      errors.message += "Message must be at least 12 characters. ";
-    }
-    // Do something with the data
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
-
-
+import { Image } from "astro:assets";
 ---
-<BaseLayout title="Astro Contact Form">
-    <main>
-        <h1>Contact</h1>
-        <form action=“https://usebasin.com/f/79245cca5e1f” method=“POST”>
-          <label>
-            Name:
-            <input type="text" name="name" required/>
-          </label>
-          {errors.name && <p>{errors.name}</p>}
-          <label>
-            Email:
-            <input type="email" name="email" required/>
-          </label>
-          {errors.email && <p>{errors.email}</p>}
-          <label>
-            Message:
-            <textarea id=“message” name=“message” rows=“5" cols=“33” required minlength="12"/>
-          </label>
-          {errors.message && <p>{errors.message}</p>}
-          <button>Submit</button>
-        </form>
+<BaseLayout sideBarActiveItemID="contact">
 
+    <div class="relative overflow-x-auto rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[100%] flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 
-    </main>
-  </layout>
+        <div class="items-center">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            <Image class="mask" format="png" width={200} height={200} src="/favicon.png" alt="Logo" />
+                        </th>
+                        <th>
+                            <div class="text-5xl font-bold">
+                                <center>Support Center <br> Ticket Submission</center>
+                            </div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <br>
+
+    <Contactform />
+
+</BaseLayout>

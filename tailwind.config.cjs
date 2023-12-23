@@ -4,7 +4,11 @@ module.exports = {
 	theme: {
 		extend: {},
 	},
-	plugins: [require("@tailwindcss/typography"),require("daisyui")],
+	plugins: [
+		require("postcss-import"),
+		require('tailwindcss/nesting')(require('postcss-nesting')),
+		require("@tailwindcss/typography"),
+		require("daisyui")],
 	daisyui: {
 		themes: true, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
 		darkTheme: "dark", // name of one of the included themes for dark mode

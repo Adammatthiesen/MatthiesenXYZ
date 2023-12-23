@@ -1,0 +1,64 @@
+---
+const errors = { name: "", email: "", message: "" };
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const message = data.get("message");
+    if (typeof name !== "string" || name.length < 1) {
+      errors.name += "Please enter a username. ";
+    }
+    if (typeof message !== "string" || message.length < 12) {
+      errors.message += "Message must be at least 12 characters. ";
+    }const hasErrors = Object.values(errors).some(msg => msg)
+    if (!hasErrors) {
+      return Astro.redirect();
+    }
+    // Do something with the data
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+<div class="relative p-3 overflow-x-auto w-full rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[100%] flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+
+    <div class="rounded-lg p-2 bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[100%]">
+ 
+        <div class="py-0 ">
+            <text class="text-lg">
+            Do you need IT help?  Looking for a Support Contract?
+            <br>
+            Need someone to setup a server, or computer?  Contact Us Below!
+            </text>
+        </div>
+
+        <div class="divider my-0" />
+
+        <form action=https://usebasin.com/f/79245cca5e1f method=POST class="cf">
+            <div class="half left cf">
+                <input type="text" id="input-name" name="name" placeholder="Name">
+                <input type="email" id="input-email" name="email" placeholder="Email address">
+                <input type="text" id="input-subject" name="subject" placeholder="Subject">
+            </div>
+            <div class="half right cf">
+                <textarea name="message" id="input-message" placeholder="Message"></textarea>
+            </div>  
+            <input type="submit" value="Submit" id="input-submit">
+        </form>
+
+        <div class="divider my-0" />
+
+        <div class="py-0 ">
+            <text class="text-sm">
+            <b>*</b> <i>This Creates a Ticket on our support center, depending on the level of support you need,
+            <br />it could require a service contract.</i>
+            </text>
+        </div>
+
+    </div>
+
+</div>
