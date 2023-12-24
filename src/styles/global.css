@@ -9,7 +9,14 @@
     padding-right: 1%;
     padding-bottom: 1%;
 }
-
+.scooootchdown{
+   padding-left: 1%;
+   padding-right: 1%;
+   padding-bottom: 2%;
+}
+.paddingup0{
+   padding-top: 0%;
+}
 .ascii-art {
    font-family: monospace;
    white-space: pre;
