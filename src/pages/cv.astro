@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import AdamCerts from "@components/index/AdamCerts.astro";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
@@ -69,14 +70,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="divider my-0" />
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      TestOut PCPro
-    </li>
-    <li>
-      <a href="https://portal.3cx.com/share/certificate/w9XQneM8HY" target="_blank"> 3cx Basic (Link)</a>
-    </li>
-  </ul>
+  <AdamCerts />
 
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Skills</div>
