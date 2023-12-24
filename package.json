@@ -9,7 +9,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postbuild": "pagefind --site dist"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^8.0.0",
@@ -21,6 +22,7 @@
     "astro": "^4.0.7",
     "daisyui": "^3.2.1",
     "dayjs": "^1.11.9",
+    "dompurify": "^3.0.6",
     "flowbite": "^2.2.1",
     "postcss": "^8.4.32",
     "postcss-nesting": "^12.0.2",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
+    "pagefind": "^1.0.4",
     "postcss": "^8.4.32",
     "postcss-nesting": "^12.0.2"
   }
