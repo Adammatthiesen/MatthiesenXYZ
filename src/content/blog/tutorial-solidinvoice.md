@@ -11,9 +11,10 @@ Below is my docker compose script used in Portainer(Can also be used as regular 
 
 **CONTAINER NAMES ARE IMPORTANT HERE, AS YOU LINK SOLIDINVOICE AND MYSQL BY NAME NOT IP!!!!**
 
-During installation at the database setup screen use the mysql container name displayed in the compose script, which can be verified by typing the <code>docker ps</code> command
+During installation at the database setup screen use the mysql container name displayed in the compose script, which can be verified by typing the ```docker ps``` command
 
 Instead of repeating already good documentation just follow the normal installation process for the rest of your install.  Only difference is instead of manually setting up your web server this is presetup, all you need to do is connect and initilize your database.  Of course with this tutorial if your already running a different MySQL Server feel free to just link into that.
+
 - SoldInvoice Documentation: [Installation Tutorial](https://docs.solidinvoice.co/en/latest/guide/installation.html)
 
 ### Docker Compose script

@@ -13,9 +13,9 @@ This project is intended to become my new IT Support Center & Help Desk for me t
 
 *I do intend to offer limited OpenSource Customer support for issues related to my blog or knowledge base on the support center, but unless you setup a **Service Contract** I may not be able to assist you in a manner that is sufficient.*
 
-I will also be created a Basic setup tutorial that I will link below when it is ready,  As well as a Tutorial for setting up the billing/invoice system I am using... both the links are below.
+Below are links to the relevent Tutorials that are used to create my support system.  The only thing I am not including is how I configured them to link together with my website so that my workflow works for my setup.  As each setup is different and has different requirements each user will have different requirements.
 
-- Tutorial: [osTicket OpenSource - Setup Tutorial](#)
+- Tutorial: [osTicket OpenSource - Setup Tutorial](/blog/tutorial-osticket)
 - Tutorial: [SolidInvoice - Setup Tutorial](/blog/tutorial-solidinvoice)
 
 ## Project Check-Ins

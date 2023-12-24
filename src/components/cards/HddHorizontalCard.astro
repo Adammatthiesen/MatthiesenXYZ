@@ -1,7 +1,6 @@
 ---
 const { title, desc, url, badge, isSSD, tags, target = "_blank" } = Astro.props;
-import Assets from "./assets.astro";
-
+import Hddreportimg from "./Hddreportimg.astro";
 ---
 
 <div
@@ -11,7 +10,7 @@ import Assets from "./assets.astro";
     <table><tr> 
       <td> 
         <div class="hero-content pd-2 py-2 mt-8  text-xl font-bold inline flex-col md:flex-row">
-          {isSSD === true ? <Assets imagePath="/src/assets/device-ssd.svg" width={100} height={100} /> : <Assets imagePath="/src/assets/device-hdd.svg" width={100} height={100} />}
+          {isSSD === true ? <Hddreportimg imagePath="/src/assets/device-ssd.svg" width={100} height={100} /> : <Hddreportimg imagePath="/src/assets/device-hdd.svg" width={100} height={100} />}
         </div>
       </td>
       <td>

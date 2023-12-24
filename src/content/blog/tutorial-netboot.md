@@ -10,11 +10,11 @@ tutorialbadge: "Tutorial"
 
 ### Table of Contents
 
-[Introduction](#introduction)  
-[Getting Started (Docker, The Easy Way)](#getting-started-docker-the-easy-way)  
-[DEFUALT names for the netboot.xyz iPxE files](#the-following-are-the-defualt-names-for-the-netbootxyz-files)  
-[Booting other operating systems, Editing the Menu](#booting-other-operating-systems-editing-the-menu)  
-[Sources](#sources)
+- [Introduction](#introduction)  
+- [Getting Started (Docker, The Easy Way)](#getting-started-docker-the-easy-way)  
+- [Router Config (Default Netboot.xyz boot files)](#router-config-default-boot-file-options)  
+- [Booting other operating systems, Editing the Menu](#booting-other-operating-systems-editing-the-menu)  
+- [Sources](#sources)
 
 ## Introduction
 
@@ -60,26 +60,28 @@ docker run -d \
   ghcr.io/netbootxyz/netbootxyz
   ```
 
-### The Following are the DEFUALT names for the netboot.xyz files
+### Router Config (Default Boot file Options)
 
-Example Router entry for netboot server:  <code>Docker IP:0.0.0.0 File:ipxe/netboot.xyz.efi</code>
+Do to the nature of Router technology there is no magic instructions that covers all routers.  Below are the Boot files as well as an example configuration that will work with routers that support this feature. *I use a Unifi UDM-Pro but since that is not the only router technology out there I will not be going through how to configure your router. (There is also plenty of documentation online that can/will help you)*
 
-<table>
-  <thead>
-    <tr><th>Bootfile Name</th><th>Description</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><code>netboot.xyz.kpxe</code></td><td>Legacy DHCP boot image file, uses built-in iPXE NIC drivers</td></tr>
-    <tr><td><code>netboot.xyz-undionly.kpxe</code></td><td>Legacy DHCP boot image file, use if you have NIC issues</td></tr>
-    <tr><td><code>netboot.xyz.efi</code></td><td>UEFI boot image file, uses built-in UEFI NIC drivers</td></tr>
-    <tr><td><code>netboot.xyz-snp.efi</code></td><td>UEFI w/ Simple Network Protocol, attempts to boot all net devices</td></tr>
-    <tr><td><code>netboot.xyz-snponly.efi</code></td><td>UEFI w/ Simple Network Protocol, only boots from device chained from</td></tr>
-    <tr><td><code>netboot.xyz-arm64.efi</code></td><td>DHCP EFI boot image file, uses built-in iPXE NIC drivers</td></tr>
-    <tr><td><code>netboot.xyz-arm64-snp.efi</code></td><td>UEFI w/ Simple Network Protocol, attempts to boot all net devices</td></tr>
-    <tr><td><code>netboot.xyz-arm64-snponly.efi</code></td><td>UEFI w/ Simple Network Protocol, only boots from device chained from</td></tr>
-    <tr><td><code>netboot.xyz-rpi4-snp.efi</code></td><td>UEFI for Raspberry Pi 4, attempts to boot all net devices</td></tr>
-  </tbody>
-</table>
+#### Example Router entry
+
+- NextServer/TFTP/Netboot: ```docker-host```
+- File: ```ipxe/netboot.xyz.efi```
+
+#### Default file values
+
+| Bootfile Name | Description |
+| ------------- | ----------- |
+| netboot.xyz.kpxe | Legacy DHCP boot image file, uses built-in iPXE NIC drivers |
+| netboot.xyz-undionly.kpxe | Legacy DHCP boot image file, use if you have NIC issues |
+| netboot.xyz.efi | UEFI boot image file, uses built-in UEFI NIC drivers |
+| netboot.xyz-snp.efi | UEFI w/ Simple Network Protocol, attempts to boot all net devices |
+| netboot.xyz-snponly.efi | UEFI w/ Simple Network Protocol, only boots from device chained from |
+| netboot.xyz-arm64.efi | DHCP EFI boot image file, uses built-in iPXE NIC drivers |
+| netboot.xyz-arm64-snp.efi | UEFI w/ Simple Network Protocol, attempts to boot all net devices |
+| netboot.xyz-arm64-snponly.efi | UEFI w/ Simple Network Protocol, only boots from device chained from |
+| netboot.xyz-rpi4-snp.efi | UEFI for Raspberry Pi 4, attempts to boot all net devices |
 
 ### Booting other operating systems, Editing the Menu
 
@@ -87,11 +89,11 @@ So when I first started trying this i got extremly confused by Netboot.xyz's exa
 
 Below is my modification of **config/menus/menu.ipxe**
 
-There is two ways to edit this file... you could log-in to the Web-GUI <code>http://docker-host:3000</code> or, you could edit the physical <code>/local/path/to/config</code> you linked in the docker startup above. *This part **REQUIRES** you to configure volume binds in order to configure and save between reboots.*
+There is two ways to edit this file... you could log-in to the Web-GUI ```http://docker-host:3000``` or, you could edit the physical ```/local/path/to/config``` you linked in the docker startup above. *This part **REQUIRES** you to configure volume binds in order to configure and save between reboots.*
 
 Menu Section (Line 43)
 
-```text
+```plaintext
 ### Installers:
 item --gap Installers:
 #item mdt-wim ${space} Windows Deployment x64 (MDT-wim)
@@ -104,7 +106,7 @@ item macrium11 ${space} Macrium Reflect Win11 (net-iso)
 
 item selection (Under :verify_sigs)
 
-```text
+```plaintext
 ###Installers
 
 #:mdt-wim

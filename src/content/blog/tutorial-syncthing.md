@@ -7,13 +7,13 @@ badge: "FOSS"
 tutorialbadge: "Tutorial"
 ---
 
-<img src="https://status-monitor.basestation.space/api/badge/22/status?label=BSN-SyncThing-Relay+&style=for-the-badge">
+![Syncthing Relay Status Monitor](https://status-monitor.basestation.space/api/badge/22/status?label=BSN-SyncThing-Relay+&style=for-the-badge "Syncthing Relay Status Monitor")
 
 ### Table of Contents
 
-[Introduction](#introduction)  
-[Syncthing Relay & Discovery Server (Docker)](#getting-started-with-relay-discovery-server-docker)
-[Syncthing Node Server (Docker)](#setting-up-a-node-docker)
+- [Introduction](#introduction)  
+- [Syncthing Relay & Discovery Server (Docker)](#getting-started-with-relay-discovery-server-docker)
+- [Syncthing Node Server (Docker)](#setting-up-a-node-docker)
 
 ## Introduction
 
@@ -43,9 +43,10 @@ services:
       - 22067:22067 # Relay Server - Main Port
       - 22070:22070 # Relay Server Optional Statistics port for public relays pool
 ```
+
 [GitHub: Syncthing Relay script](https://github.com/Adammatthiesen/docker-compose-scripts/blob/main/docker-compose/syncthing-relay-discovery.yml)
 
-Once you have this container up and running and the above ports forwarded to your container, you should now be able to see your relay on https://relays.syncthing.net/endpoint if you opted to create a public relay.  
+Once you have this container up and running and the above ports forwarded to your container, you should now be able to see your relay on [relays.syncthing.net](https://relays.syncthing.net/) if you opted to create a public relay.  
 
 I used Cloudflare Tunnels (Zero Trust/Argo Tunnel) to create a Proxy for my domain to point to my dicovery server using ```https://discovery.example.com - <HTTP>:<DOCKERIP:22026>```
 
@@ -76,6 +77,7 @@ services:
       - 21027:21027/udp #Local Port
     restart: unless-stopped
 ```
+
 [GitHub: Syncthing Node Script](https://github.com/Adammatthiesen/docker-compose-scripts/blob/main/docker-compose/syncthing-node.yml)
 
-You can pre-fill the Sync data you plan to sync between the systems for the initial setup, and after you start the sync it can be configured to Download, Download & Upload, or Upload.  In the Menu (http://<DOCKER IP>:8384/) **ACTION** -> **SETTINGS** -> **CONNECTIONS** -> **Global Discovery Servers** you can put your link to your discovery server here.
+You can pre-fill the Sync data you plan to sync between the systems for the initial setup, and after you start the sync it can be configured to Download, Download & Upload, or Upload.  In the Menu (```http://DOCKER-IP:8384/```) **ACTION** -> **SETTINGS** -> **CONNECTIONS** -> **Global Discovery Servers** you can put your link to your discovery server here.

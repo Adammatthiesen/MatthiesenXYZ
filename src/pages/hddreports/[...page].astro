@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import HddHorizontalCard from "../../components/cards/HddHorizontalCard.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import HddHorizontalCard from "@components/cards/HddHorizontalCard.astro";
 import { getCollection } from "astro:content";
-import Assets from "@components/cards/assets.astro";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import Example from "@components/hddreports/Example.astro";
 
 export async function getStaticPaths({ paginate }){
   const hddreportlist = await getCollection("hddreports");
@@ -27,41 +27,10 @@ const { page } = Astro.props;
     </div>
     <div class="divider my-2" />
 
-    <!-- EXAMPLE -->
-    <div class="flex items-center p-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-900 dark:text-yellow-300" role="alert">
-      <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-      </svg>
-      <span class="sr-only">Example:</span>
-      <div>
-        <span class="font-medium">Example ~</span> Below is a Example of how these entries are layed out.
-      </div>
-    </div>
-    <br>
-    <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
-      <table><tr> 
-        <td> 
-          <div class="hero-content pd-2 text-xl font-bold inline flex-col md:flex-row">
-            <Assets imagePath="/src/assets/device-hdd.svg" width={100} height={100} />
-          </div>
-        </td>
-        <td>
-          <div class="hero-content flex-col md:flex-row">
-            <div class="grow w-full">
-              <h1 class="text-xl font-bold">
-                MAKE MODEL ~ S/N: SERIALNUMBER<br />
-              </h1>
-              <h2 class="text-l font-bold">
-                0Gb - 2.5"/3.5" SSD/HDD
-              </h2>
-              <p class="py-1 text-1xl">Report Date: Jan 01, 0000</p>
-            </div>
-        </td>
-      </tr></table>
-    </div>
-      <!-- END EXAMPLE -->
+    <Example />
 
     <div class="divider my-2" />
+
     <div class="flex items-center p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-900 dark:text-blue-400" role="alert">
       <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>

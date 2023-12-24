@@ -1,17 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: [
+		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'
+	],
 	theme: {
 		extend: {},
 	},
 	plugins: [
+		require("daisyui"),
 		require("postcss-import"),
 		require('tailwindcss/nesting')(require('postcss-nesting')),
-		require("@tailwindcss/typography"),
-		require("daisyui")],
+		require("@tailwindcss/typography")
+	],
 	daisyui: {
-		themes: true, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
-		darkTheme: "dark", // name of one of the included themes for dark mode
+		themes: [
+		  {
+			mytheme: {
+			   "primary": "#f3f4f6",
+			   "secondary": "#d1d5db",
+			   "accent": "#9ca3af",
+			   "neutral": "#ffffff",
+			   "base-100": "#111827",
+			   "info": "#22c55e",
+			   "success": "#3b82f6",
+			   "warning": "#fde047",
+			   "error": "#991b1b",
+			},
+		  },
+		],
 		logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
 	  }
 }

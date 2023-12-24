@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import HorizontalCard from "@components/cards/HorizontalCard.astro";
+
+const posts = (await getCollection("blog", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;}))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+<div class="pd-2 bg-white p-2 border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
+    <div>
+      <div class="text-3xl font-bold mb-2">Latest from my blog</div>
+    </div>
+    {
+      last_posts.map((post) => (
+          <div class="divider my-1" />
+          <HorizontalCard
+            title={post.data.title}
+            img={post.data.heroImage}
+            desc={post.data.description}
+            url={"/blog/" + post.slug}
+            target=""
+            badge={post.data.badge}
+            blogbadge={post.data.blogbadge}
+            tutorialbadge={post.data.tutorialbadge}
+            projectbadge={post.data.projectbadge}
+          />
+      ))
+    }
+  </div>
