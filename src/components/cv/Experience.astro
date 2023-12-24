@@ -1,5 +1,5 @@
 ---
-import TimeLineElement from "@components/cv/TimeLine.astro";
+import ExperienceTimeLineElement from "@components/cv/ExperienceTimeLine.astro";
 ---
 <div class="mb-5">
     <div class="text-3xl w-full font-bold">Experience</div>
@@ -9,32 +9,56 @@ import TimeLineElement from "@components/cv/TimeLine.astro";
 
 <div class="time-line-container mb-10">
 
-  <TimeLineElement
-    title="IT Operations | Adam Matthiesen Support Center"
+  <ExperienceTimeLineElement
+    title="IT Operations"
+    title2="Adam Matthiesen Support Center"
     subtitle="Coming Soon 2024"
+    location="USA"
   >
-  I offer IT Support and Network Administration Services through my <a href="https://support.matthiesen.xyz">Support Center</a>.
-  </TimeLineElement>
+  I offer IT Support and Network Administration Services through my <a href="https://support.matthiesen.xyz" class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+    Support Center.
+    <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    </svg>
+    </a>
+  </ExperienceTimeLineElement>
 
-  <TimeLineElement
-    title="IT Contractor | Upwork"
-    subtitle="From June 2021 To Present, Global"
+  <br>
+
+  <ExperienceTimeLineElement
+    title="IT Contractor"
+    title2="Upwork"
+    subtitle="From June 2021 To Present"
+    location="Global, USA"
   >
-  I offer IT Support and Network Administration Services through my <a href="https://rebrand.ly/ad14c7">Upwork Profile</a>.
-  </TimeLineElement>
+  I offer IT Support and Network Administration Services through my <a href="https://www.upwork.com/freelancers/~01614845145ce09d65" class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+    Upwork Profile.
+    <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    </svg>
+    </a>
+  </ExperienceTimeLineElement>
 
-  <TimeLineElement
-    title="Independent Technician | HelloTech"
-    subtitle="From December 2020 To July 2022, Greater Seattle Area, Washington, USA"
+  <br>
+
+  <ExperienceTimeLineElement
+    title="Independent Technician"
+    title2="HelloTech"
+    subtitle="From December 2020 To July 2022"
+    location="Greater Seattle Area, Washington USA"
   >
   HelloTech provides nationwide, on-demand, expert tech and IT support, including Computer Repair, WiFi Services, Smart Home Installations, TV Mountings, and more. Brands like Comcast, Dwelo, and Walmart, as well as millions of customers like you, trust HelloTech to keep them up and running across all their devices.
-  </TimeLineElement>
+  </ExperienceTimeLineElement>
 
-  <TimeLineElement
-    title="Help Desk Technician | Your Business Solutions, INC. (YBS)"
-    subtitle="From February 2018 To Auguest 2018, Remote, USA"
+  <br>
+
+  <ExperienceTimeLineElement
+    title="Help Desk Technician"
+    title2="Your Business Solutions, INC. (YBS)"
+    subtitle="From February 2018 To Auguest 2018"
+    location="(Remote) Texas USA"
   >
   As a YBS Help Desk Technician, I have experience with Microsoft Office 365(including Word, Excel, OneNote, Teams, Sharepoint, OneDrive, AzureAD, Skype for Business, Visio), ConnectWise Manage/Automate/ScreenConnect, Crexendo VOIP, Counterpath Bria, Ubiquiti Networking, VMware vSphere, VMware ESXi, VMware Workstation Pro 14, Datto Backup, Remote Desktop, Some graphic design, and of course Customer Service.
-  </TimeLineElement>
+  </ExperienceTimeLineElement>
 
 </div>

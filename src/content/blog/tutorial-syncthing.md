@@ -1,5 +1,5 @@
 ---
-title: "Getting Started With Syncthing, Node, Relay, and Discovery."
+title: "Syncthing - Getting Started With the Node, Relay, and Discovery servers."
 description: "A Getting Started Guide to Syncthing and Getting started with the Node, Relay, and Discovery servers."
 pubDate: "Dec 12 2023"
 heroImage: "/syncthing.png"

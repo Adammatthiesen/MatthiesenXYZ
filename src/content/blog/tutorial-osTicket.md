@@ -1,5 +1,5 @@
 ---
-title: "osTicket Quick Start Docker"
+title: "osTicket - Quick Start Docker"
 description: "osTicket is usasually a pretty quick and easy setup using their regular install method, but lets set it up using a Docker Container!"
 pubDate: "Dec 24 2023"
 heroImage: "/osTicket.png"

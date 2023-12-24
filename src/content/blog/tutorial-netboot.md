@@ -1,5 +1,5 @@
 ---
-title: "My Journey to Network Booting with Open Source"
+title: "Netboot.xyz - My Journey to Network Booting with Open Source"
 description: "My journey learning and exploring ipxe and netboot.xyz, learning tips and tricks and how to boot windows and bootable images."
 pubDate: "Dec 11 2023"
 heroImage: "/netbootxyz.png"
