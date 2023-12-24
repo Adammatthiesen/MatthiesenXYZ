@@ -12,7 +12,7 @@ const { imagePath, width, height} = Astro.props;
 const images = import.meta.glob('/src/assets/*.{jpeg,jpg,png,gif,svg}')
 ---
 
-<div class="card text-xl font-bold">
+<div class="card inline text-xl font-bold">
     <Image 
         src={images[imagePath]()}
         width={width} 

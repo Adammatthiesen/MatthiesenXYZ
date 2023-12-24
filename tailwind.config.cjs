@@ -13,21 +13,8 @@ module.exports = {
 		require("@tailwindcss/typography")
 	],
 	daisyui: {
-		themes: [
-		  {
-			mytheme: {
-			   "primary": "#f3f4f6",
-			   "secondary": "#d1d5db",
-			   "accent": "#9ca3af",
-			   "neutral": "#ffffff",
-			   "base-100": "#111827",
-			   "info": "#22c55e",
-			   "success": "#3b82f6",
-			   "warning": "#fde047",
-			   "error": "#991b1b",
-			},
-		  },
-		],
+		themes: true, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
+		darkTheme: "night", // name of one of the included themes for dark mode
 		logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
 	  }
 }
