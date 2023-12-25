@@ -7,12 +7,10 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 export interface Props extends HddSchema {}
 
 const { serial, make, model, type, size, reportDate, capacity, manuDate, pdf} = Astro.props;
-
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(reportDate).format("ll");
 const manudisplayDate = dayjs(manuDate).format("ll");
 ---
-
 <BaseLayout sideBarActiveItemID="hddreports" title={make + " " + model + " ~ " + serial} description={capacity}>
   <main class="relative overflow-x-auto flex flex-col w-[1500px]">
     <article class="prose prose-lg max-w-[1500px] prose-img:mx-auto">

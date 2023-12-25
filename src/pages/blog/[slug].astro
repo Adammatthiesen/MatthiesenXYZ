@@ -6,34 +6,18 @@ import dayjs from 'dayjs';
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
-
 dayjs.extend(utc)
 dayjs.extend(timezone)
 dayjs.extend(LocalizedFormat)
-
-export async function getStaticPaths() {
-  const postEntries = await getCollection("blog");
-  return postEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
-}
-
-interface Props {
-  entry: CollectionEntry<"blog">;
-}
-
+export async function getStaticPaths() { const postEntries = await getCollection("blog");
+  return postEntries.map((entry) => ({ params: { slug: entry.slug }, props: { entry }, })); }
+interface Props { entry: CollectionEntry<"blog">; }
 const { entry } = Astro.props;
 const post: BlogSchema = entry.data;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 const tz = "America/Los_Angeles"
-const lastModified = dayjs(remarkPluginFrontmatter.lastModified)
-  .utc()
-  .local()
-  .tz()
-  .format('LL');
+const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().local().tz().format('LL');
 ---
-
 <BlogPostLayout 
   title={post.title}
   description={post.description}

@@ -6,58 +6,22 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import Example from "@components/hddreports/Example.astro";
 import SearchWidget from "@components/hddreports/SearchWidget.astro";
-
-export async function getStaticPaths({ paginate }){
-  const hddreportlist = await getCollection("hddreports");
-  hddreportlist.sort((a, b) => b.data.reportDate.valueOf() - a.data.reportDate.valueOf());
-  return paginate(hddreportlist);
-}
-
+import BannerReports from "@components/hddreports/Banner_Reports.astro";
 dayjs.extend(localizedFormat);
-
+export async function getStaticPaths({ paginate }){const hddreportlist = await getCollection("hddreports");
+  hddreportlist.sort((a, b) => b.data.reportDate.valueOf() - a.data.reportDate.valueOf());
+  return paginate(hddreportlist);}
 const { page } = Astro.props;
-
 ---
-
 <BaseLayout title="HDD Reports" sideBarActiveItemID="hddreports">
   <div class="w-[1000px] pd-2 scooootch bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
-    <div class="items-center">
-      <br> 
-      <div class="text-5xl font-bold"><center>Hard Drive Wiped Disk Reports</center></div>
-      <br>
-    </div>
-
+    <div class="items-center"><br><div class="text-5xl font-bold"><center>Hard Drive Wiped Disk Reports</center></div><br></div>
     <SearchWidget />
-
-    <div class="divider my-2" />
-
     <Example />
-
-    <div class="divider my-2" />
-
-    <div class="flex items-center p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-900 dark:text-blue-400" role="alert">
-      <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-      </svg>
-      <span class="sr-only">Reports</span>
-      <div>
-        <span class="font-medium">Reports ~</span> Below is a list of all available reports. <i>These do <b>not</b> get deleted.</i>
-      </div>
-    </div>
+    <BannerReports />
     <div class="">
-        { page.data.map((post) => (
-          <>
-          <br>
-          <HddHorizontalCard
-            title={post.data.make + " " + post.data.model + " ~ S/N: " + post.data.serial}
-            desc={"Report Date: " + dayjs(post.data.reportDate).format("ll")}
-            badge={post.data.capacity + " - " + post.data.size + " " + post.data.type}
-            url={"/hddreports/" + post.slug}
-            target=""
-            isSSD={post.data.isSSD}
-          />
-          </>
-            ))
-        }
+      { page.data.map((post) => (<><br><HddHorizontalCard title={post.data.make + " " + post.data.model + " ~ S/N: " + post.data.serial} 
+      desc={"Report Date: " + dayjs(post.data.reportDate).format("ll")} badge={post.data.capacity + " - " + post.data.size + " " + post.data.type} 
+      url={"/hddreports/" + post.slug} target="" isSSD={post.data.isSSD}/></>)) }
     </div>
 </BaseLayout>

@@ -29,14 +29,11 @@ const hddSchema = z.object({
         isSSD: z.boolean(),
     });
 
+// EXPORT SCHEMA
 export type BlogSchema = z.infer<typeof blogSchema>;
 export type HddSchema = z.infer<typeof hddSchema>;
-
+// COLLECTION IS SCHEMA
 const blogCollection = defineCollection({ schema: blogSchema });
 const hddreportsCollection = defineCollection({ schema: hddSchema });
-
-// Allows use of Collections elsewhere
-export const collections = {
-    'blog': blogCollection,
-    'hddreports': hddreportsCollection,
-}
+// EXPORT COLLECTIONS
+export const collections = { 'blog': blogCollection, 'hddreports': hddreportsCollection, }
