@@ -7,7 +7,7 @@ blogbadge: "Blog Post"
 projectbadge: "Ongoing Project"
 ---
 
-### Release Date: TBD
+### Release Date: Jan, 1, 2024
 
 This project is intended to become my new IT Support Center & Help Desk for me to run for both local & remote small businesses, as well as some home individuals.
 
@@ -19,6 +19,10 @@ Below are links to the relevent Tutorials that are used to create my support sys
 - Tutorial: [SolidInvoice - Setup Tutorial](/blog/tutorial-solidinvoice)
 
 ## Project Check-Ins
+
+### Dec. 25th 2024
+
+- Hi, I just wanted to update "everyone" today for Christmas of 2023, **MERRY CHRISTMAS** from the MatthiesenXYZ Family!  I will be launching the support system at the beginning of 2024!
 
 ### Dec. 23rd 2023
 
