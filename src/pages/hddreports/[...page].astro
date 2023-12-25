@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import Example from "@components/hddreports/Example.astro";
-import { create, Lyra, search, PropertiesSchema, insertBatch } from "@orama/orama";
+import SearchWidget from "@components/hddreports/SearchWidget.astro";
 
 export async function getStaticPaths({ paginate }){
   const hddreportlist = await getCollection("hddreports");
@@ -26,6 +26,8 @@ const { page } = Astro.props;
       <div class="text-5xl font-bold"><center>Hard Drive Wiped Disk Reports</center></div>
       <br>
     </div>
+
+    <SearchWidget />
 
     <div class="divider my-2" />
 

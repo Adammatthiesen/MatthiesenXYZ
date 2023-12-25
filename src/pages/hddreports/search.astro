@@ -1,0 +1,188 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="HDD Reports" sideBarActiveItemID="hddreports">
+  <div class="w-[1000px] pd-2 scooootch bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
+    <div class="items-center">
+      <br> 
+      <div class="text-5xl font-bold"><center>Search Results: HDD Wipe Reports</center></div>
+      <br>
+    </div>
+
+    <div>   
+      <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+      <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+          </div>
+          <input type="search" id="search" name="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for Drive Report by SN..." required>
+          <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+      </div>
+    </div>
+
+    <div class="divider my-2" />
+
+    <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-900 dark:text-green-400 dark:border-green-800" role="alert">
+      <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+      </svg>
+      <span class="sr-only">Search Results for...</span>
+      <div>
+        <span id="searchReadout" class="font-medium">No Current Search</span>
+      </div>
+    </div>
+
+    <section aria-label="Search Results">
+        <ul id="searchResults"></ul>
+    </section>
+</BaseLayout>
+
+<script>
+  // imports
+  import DOMPurify from "dompurify";
+  import Fuse from "fuse.js"
+
+  let SEARCH_DATA;
+  let FUSE_INSTANCE;
+  const FUSE_OPTIONS = {
+    includeScore: true,
+    shouldSort: true,
+    threshold: 0.5,
+    keys: [
+      {
+        name: "serial",
+        weight: 1,
+      },
+      {
+        name: "make",
+        weight: 0.75,
+      },
+      {
+        name: "model",
+        weight: 0.5,
+      }
+    ]
+  }
+
+  const SPINNER = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="justify-center bi bi-arrow-clockwise" viewBox="0 0 16 16" id="spinner">
+  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/><style> #spinner { animation: spin 1s linear infinite; } @keyframes spin { 100% { transform: rotate(360deg); }}</style></svg>`;
+  const NOTHING_FOUND = `<div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-900 dark:text-red-400 dark:border-red-800" role="alert"><svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/></svg><span class="sr-only">Error</span><div><span class="font-medium">No results found...</span> Please try again!</div></div>`
+
+  // selectors
+  const search = document.querySelector("#search");
+  const searchReadout = document.querySelector("#searchReadout");
+  const resultsList = document.querySelector("#searchResults");
+
+  // functions
+  function updateDocumentTitle(search) {
+    document.title = search
+      ? `HDD Reports Search - Results for: "${search}"`
+      : "HDD Reports Search";
+  }
+
+  function updateSearchReadout(search) {
+    searchReadout.textContent = search
+      ? `HDD Report results for "${search}"`
+      : 'HDD Report results for "No current search..."';
+  }
+
+  function updateSearchPageURL(search) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("q", search);
+    window.history.replaceState(null, "", url);
+  }
+
+  function nothinghere() {
+    return NOTHING_FOUND;
+  }
+
+  function generateSearchList(results) {
+    return results.map((r) => {
+      const { serial, make, model, slug, date, capacity, size, type, isSSD } = r.item;
+      const dateasDate = new Date(date);
+      return `
+          <li>
+            <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
+              <a href='/hddreports/${slug}' target=""> 
+                <table><tr> 
+                  <td> 
+                    <div class="hero-content pd-2 px-2 py-2 mt-8  text-blue-600 text-xl font-bold inline flex-col md:flex-row">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="pd-2 px-2 bi bi-asterisk" viewBox="0 0 16 16"><path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/></svg>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="hero-content flex-col md:flex-row">
+                      <div class="grow w-full">
+                        <h1 class="text-xl font-bold">
+                          ${make} ${model} ~ S/N: ${serial}
+                        </h1>
+                        <h2 class="text-l font-bold">
+                          ${capacity} - ${size} ${type}
+                        </h2>
+                        <p class="py-1 text-1xl">Report Date: <time datetime="${dateasDate.toISOString()}">
+                          ${dateasDate.toLocaleDateString("en-us", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                          })}<time>
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                </tr></table>
+              </a>
+            </div><br>
+          </li>`;
+    })
+    .join("");
+  }
+
+  async function fetchSearchResults(search) {
+    if (search.length === 0) return;
+    resultsList.innerHTML = SPINNER;
+    if (!SEARCH_DATA) {
+      try {
+      const res = await fetch("/hddreports/search.json");
+      if (!res.ok) {
+        throw new Error("Something went wrong... Please try again!")
+      }
+      const data = await res.json();
+      SEARCH_DATA = data;
+    } catch (e) {
+      console.error(e);
+      }
+    }
+    if (SEARCH_DATA && !FUSE_INSTANCE){
+      FUSE_INSTANCE = new Fuse(SEARCH_DATA, FUSE_OPTIONS);
+    }
+    if (!FUSE_INSTANCE) return;
+    const searchResults = FUSE_INSTANCE.search(search);
+    resultsList.innerHTML = 
+      searchResults.length > 0
+        ? generateSearchList(searchResults)
+        : nothinghere();
+  }
+
+  // event listeners
+  window.addEventListener("DOMContentLoaded", () => {
+    const urlParams = DOMPurify.sanitize(
+      new URLSearchParams(window.location.search).get("q")
+    );
+    fetchSearchResults(urlParams);
+    updateDocumentTitle(urlParams);
+    updateSearchReadout(urlParams);
+    search.value = urlParams;
+    search.focus();
+  });
+
+  search.addEventListener("input", () => {
+    const searchTerm = DOMPurify.sanitize(search.value);
+    updateDocumentTitle(searchTerm);
+    updateSearchReadout(searchTerm);
+    fetchSearchResults(searchTerm);
+    updateSearchPageURL(searchTerm);
+  });
+</script>
