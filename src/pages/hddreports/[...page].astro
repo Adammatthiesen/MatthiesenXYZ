@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import HddHorizontalCard from "@components/hddreports/HddHorizontalCard.astro";
+import HddHorizontalCard from "@components/contentResources/hddreports/HddHorizontalCard.astro";
 import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import Example from "@components/hddreports/Example.astro";
-import SearchWidget from "@components/hddreports/SearchWidget.astro";
-import BannerReports from "@components/hddreports/Banner_Reports.astro";
+import Example from "@components/contentResources/hddreports/Example.astro";
+import SearchWidget from "@components/contentResources/hddreports/SearchWidget.astro";
+import BannerReports from "@components/contentResources/hddreports/Banner_Reports.astro";
 dayjs.extend(localizedFormat);
 export async function getStaticPaths({ paginate }){const hddreportlist = await getCollection("hddreports");
   hddreportlist.sort((a, b) => b.data.reportDate.valueOf() - a.data.reportDate.valueOf());

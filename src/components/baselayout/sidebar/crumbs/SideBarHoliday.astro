@@ -1,12 +1,16 @@
 ---
-import HolidayChristmas from "./Holidays/HolidayChristmas.astro";
-import HolidayNewYear from "./Holidays/HolidayNewYear.astro";
+import HolidayChristmas from "./holidays/HolidayChristmas.astro";
+import HolidayNewYear from "./holidays/HolidayNewYear.astro";
+import HolidayJuly4th from "./holidays/HolidayJuly4th.astro";
+import HolidayHolloween from "./holidays/HolidayHolloween.astro";
+import HolidayVeteransDay from "./holidays/HolidayVeteransDay.astro";
+import HolidayThanksgiving from "./holidays/HolidayThanksgiving.astro";
 ---
 <div id="newyear" class="hidden"><HolidayNewYear /></div>
-<div id="july4th" class="hidden"><!--HolidayJuly4th /--></div>
-<div id="holloween" class="hidden"><!--HolidayHolloween /--></div>
-<div id="veteransday" class="hidden"><!--HolidayVeteransDay /--></div>
-<div id="thanksgiving" class="hidden"><!--HolidayThanksgiving /--></div>
+<div id="july4th" class="hidden"><HolidayJuly4th /></div>
+<div id="holloween" class="hidden"><HolidayHolloween /></div>
+<div id="veteransday" class="hidden"><HolidayVeteransDay /></div>
+<div id="thanksgiving" class="hidden"><HolidayThanksgiving /></div>
 <div id="christmas" class="hidden"><HolidayChristmas /></div>
 <div id="endofyear" class="hidden"><HolidayNewYear /></div>
 
@@ -46,13 +50,13 @@ import HolidayNewYear from "./Holidays/HolidayNewYear.astro";
     var christmas = document.getElementById('christmas');
     var endofyear = document.getElementById('endofyear');
     // FINAL CHECK
-    newyear.classList[isNewYear? 'remove' : 'add']('hidden');
-    july4th.classList[isJuly4th? 'remove' : 'add']('hidden');
-    veteransday.classList[isVeteransDay? 'remove' : 'add']('hidden');
-    holloween.classList[isHolloween? 'remove' : 'add']('hidden');
-    thanksgiving.classList[isThanksgiving? 'remove' : 'add']('hidden');
-    christmas.classList[isChristmas? 'remove' : 'add']('hidden');
-    endofyear.classList[isEndOfYear? 'remove' : 'add']('hidden');
+    newyear.classList[isNewYear ? 'remove' : 'add']('hidden');
+    july4th.classList[isJuly4th ? 'remove' : 'add']('hidden');
+    veteransday.classList[isVeteransDay ? 'remove' : 'add']('hidden');
+    holloween.classList[isHolloween ? 'remove' : 'add']('hidden');
+    thanksgiving.classList[isThanksgiving ? 'remove' : 'add']('hidden');
+    christmas.classList[isChristmas ? 'remove' : 'add']('hidden');
+    endofyear.classList[isEndOfYear ? 'remove' : 'add']('hidden');
   }
   window.onload = function() { holidaySchedule(); };
 </script>
