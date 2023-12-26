@@ -1,11 +1,58 @@
 ---
+import HolidayChristmas from "./Holidays/HolidayChristmas.astro";
+import HolidayNewYear from "./Holidays/HolidayNewYear.astro";
 ---
-<div class="w-fit mx-auto pd-0 mt-5 mb-6">
-    <div class="avatar transition pd-0 ease-in-out hover:scale-[115%] block m-auto">
-      <div class="w-[12rem] relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-badge group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-        <div class="text-white items-center pd-0 p-0 bg-white items-center border border-gray-700 rounded-badge shadow sm:p-0 md:p-2 dark:bg-gray-900 dark:border-gray-900">
-          <img src="/Holidays/Christmas.svg" class="svg" width={500} height={500} />
-        </div>
-      </div>
-    </div>
- </div>
+<div id="newyear" class="hidden"><HolidayNewYear /></div>
+<div id="july4th" class="hidden"><!--HolidayJuly4th /--></div>
+<div id="holloween" class="hidden"><!--HolidayHolloween /--></div>
+<div id="veteransday" class="hidden"><!--HolidayVeteransDay /--></div>
+<div id="thanksgiving" class="hidden"><!--HolidayThanksgiving /--></div>
+<div id="christmas" class="hidden"><HolidayChristmas /></div>
+<div id="endofyear" class="hidden"><HolidayNewYear /></div>
+
+<script>
+  function holidaySchedule(currentDate = new Date()) {
+    // GET CURRENT YEAR FROM INIT FUNCTION REQUEST
+    var getCurrentYear = currentDate.getFullYear();
+    // SCHEDULE
+    var newYearStart = new Date(getCurrentYear, 0, 1);
+    var newYearEnd = new Date(getCurrentYear, 0, 14);
+    var july4thStart = new Date(getCurrentYear, 5, 1);
+    var july4thEnd = new Date(getCurrentYear, 5, 7);
+    var veteransDayStart = new Date(getCurrentYear, 10, 10);
+    var veteransDayEnd = new Date(getCurrentYear, 10, 12);
+    var holloweenStart = new Date(getCurrentYear, 9, 27);
+    var holloweenEnd = new Date(getCurrentYear, 10, 1);
+    var thanksgivingStart = new Date(getCurrentYear, 10, 14);
+    var thanksgivingEnd = new Date(getCurrentYear, 10, 29);
+    var christmasStart = new Date(getCurrentYear, 11, 10);
+    var christmasEnd = new Date(getCurrentYear, 11, 27);
+    var endOfYearStart = new Date(getCurrentYear, 11, 28);
+    var endOfYearEnd = new Date(getCurrentYear, 11, 31);
+    // COMPARE DATES TO CURRENT DATE
+    var isNewYear = newYearStart <= currentDate && currentDate <= newYearEnd;
+    var isJuly4th = july4thStart <= currentDate && currentDate <= july4thEnd;
+    var isVeteransDay = veteransDayStart <= currentDate && currentDate <= veteransDayEnd;
+    var isHolloween = holloweenStart <= currentDate && currentDate <= holloweenEnd;
+    var isThanksgiving = thanksgivingStart <= currentDate && currentDate <= thanksgivingEnd;
+    var isChristmas = christmasStart <= currentDate && currentDate <= christmasEnd;
+    var isEndOfYear = endOfYearStart <= currentDate && currentDate <= endOfYearEnd;
+    // FIND HTML Elements TO HIDE OR SHOW
+    var newyear = document.getElementById('newyear');
+    var july4th = document.getElementById('july4th');
+    var veteransday = document.getElementById('veteransday');
+    var holloween = document.getElementById('holloween');
+    var thanksgiving = document.getElementById('thanksgiving');
+    var christmas = document.getElementById('christmas');
+    var endofyear = document.getElementById('endofyear');
+    // FINAL CHECK
+    newyear.classList[isNewYear? 'remove' : 'add']('hidden');
+    july4th.classList[isJuly4th? 'remove' : 'add']('hidden');
+    veteransday.classList[isVeteransDay? 'remove' : 'add']('hidden');
+    holloween.classList[isHolloween? 'remove' : 'add']('hidden');
+    thanksgiving.classList[isThanksgiving? 'remove' : 'add']('hidden');
+    christmas.classList[isChristmas? 'remove' : 'add']('hidden');
+    endofyear.classList[isEndOfYear? 'remove' : 'add']('hidden');
+  }
+  window.onload = function() { holidaySchedule(); };
+</script>
