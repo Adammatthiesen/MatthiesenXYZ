@@ -18,10 +18,21 @@ const { page } = Astro.props;
     <div class="items-center"><br><div class="text-5xl font-bold"><center>Hard Drive Wiped Disk Reports</center></div><br></div>
     <SearchWidget />
     <Example />
+    <div class="divider my-2" />
     <BannerReports />
     <div class="">
-      { page.data.map((post) => (<><br><HddHorizontalCard title={post.data.make + " " + post.data.model + " ~ S/N: " + post.data.serial} 
-      desc={"Report Date: " + dayjs(post.data.reportDate).format("ll")} badge={post.data.capacity + " - " + post.data.size + " " + post.data.type} 
-      url={"/hddreports/" + post.slug} target="" isSSD={post.data.isSSD}/></>)) }
+      { page.data.map((post) => (
+        <>
+        <div class="my-1" /> 
+        <HddHorizontalCard 
+        title={post.data.make + " " + post.data.model + " ~ S/N: " + post.data.serial} 
+        desc={"Report Date: " + dayjs(post.data.reportDate).format("ll")} 
+        badge={post.data.capacity + " - " + post.data.size + " " + post.data.type} 
+        url={"/hddreports/" + post.slug} 
+        target="" 
+        isSSD={post.data.isSSD}
+        />
+        </>
+        )) }
     </div>
 </BaseLayout>
