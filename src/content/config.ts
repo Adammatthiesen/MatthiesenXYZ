@@ -8,12 +8,8 @@ const blogSchema = z.object({
         updatedDate: z.string().optional(),
         heroImage: z.string().optional(),
         badge: z.string().optional(),
-        blogbadge: z.string().optional(),
-        tutorialbadge: z.string().optional(),
-        projectbadge: z.string().optional(),
-        tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
-            message: 'tags must be unique',}).optional(),
-    });
+        tags: z.array(z.string()),
+}) 
 
 const hddSchema = z.object({
         serial: z.string(),

@@ -1,21 +1,52 @@
 ---
+import type { GetStaticPaths } from "astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HorizontalCard from "@components/cards/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-export async function getStaticPaths({ paginate }) { const posts = await getCollection('blog', ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true; }); posts.sort((a, b) => b.data.pubDate.valueOf() -
-    a.data.pubDate.valueOf()); return paginate(posts, { pageSize: 10 });}
+export async function getStaticPaths({ paginate }) { 
+  const posts = await getCollection('blog', ({ data }) => {return import.meta.env.PROD ? data.draft !== true : true; }); 
+    posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return paginate(posts, { pageSize: 10 });
+
+}
+const allPosts = await getCollection("blog");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
 const { page } = Astro.props;
 ---
 <BaseLayout title="Blog" sideBarActiveItemID="blog">
-  <div class="pd-2 bg-white border scooootch border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5"><div class="items-center"><br><div class="text-5xl font-bold"><center>Blog & Tutorials</center></div><br></div>
-  { page.data.length === 0 ? ( <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
+  <div class="pd-2 bg-white border scooootch border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5 w-full">
+    <div class="items-center">
+      <br />
+      <div class="text-5xl font-bold">
+        <center>Blog & Tutorials</center>
+      </div>
+      <br />
+    </div>
+    <div class="p-4 inline-flex text-sm text-gray-900 rounded-badge bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
+    Tags: {tags.map((tag) => <a href={`/blog/tag/${tag}`} class="ml-2 badge badge-outline">{tag}</a>)}
+    </div>
+  <div class="divider my-1" /> 
+  { page.data.length === 0 ? ( 
+    <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
       <p class="font-bold">Sorry!</p>
       <p>There are no blog posts to show at the moment. Check back later!</p></div>
     ) : ( <ul>
-      {page.data.map((post) => (<> <div class="divider my-1" /> <HorizontalCard title={post.data.title} img={post.data.heroImage} 
-        desc={post.data.description} url={"/blog/" + post.slug} target="_self" badge={post.data.badge} blogbadge={post.data.blogbadge} 
-        tutorialbadge={post.data.tutorialbadge} projectbadge={post.data.projectbadge} tags={post.data.tags}/></>))}</ul>) }
+      {page.data.map((post) => (
+        <> 
+        <HorizontalCard 
+          title={post.data.title} 
+          img={post.data.heroImage} 
+          desc={post.data.description} 
+          url={"/blog/" + post.slug} 
+          target="_self" 
+          badge={post.data.badge} 
+          tags={post.data.tags}
+        />
+        <div class="divider my-1" /> 
+        </>
+        ))}
+        </ul> )}
 
     <div class="flex justify-between"><div class="divider my-0" />
     { page.url.prev ? ( <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">

@@ -1,13 +1,13 @@
 ---
 import Contactform from "@components/contentResources/contact/ContactForm.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayoutnoGrow from "@layouts/BaseLayout-noGrow.astro";
 import ExistingCustomer from "@components/contentResources/contact/ExistingCustomer.astro";
 import SupportCenterBanner from "@components/contentResources/contact/SupportCenterBanner.astro";
 ---
-<BaseLayout sideBarActiveItemID="contact">
+<BaseLayoutnoGrow sideBarActiveItemID="contact">
     <SupportCenterBanner />
     <br>
     <ExistingCustomer />
     <br>
     <Contactform />
-</BaseLayout>
+</BaseLayoutnoGrow>

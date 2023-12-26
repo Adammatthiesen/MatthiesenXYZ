@@ -12,9 +12,9 @@ const displayDate = dayjs(reportDate).format("ll");
 const manudisplayDate = dayjs(manuDate).format("ll");
 ---
 <BaseLayout sideBarActiveItemID="hddreports" title={make + " " + model + " ~ " + serial} description={capacity}>
-  <main class="relative overflow-x-auto flex flex-col w-[1500px]">
-    <article class="prose prose-lg max-w-[1500px] prose-img:mx-auto">
-      <h1 class="title relative max-w-[1500px] my-2 text-4xl font-bold">{make + " " + model + " ~ S/N: " + serial}</h1>
+  <main class="relative p-6 pt-10 w-full lg:max-w-[1100px] sm:w-[100vw]">
+    <article class="prose prose-lg max-w-[1100px] sm:w-[100vw]prose-img:mx-auto pl-10 ">
+      <h1 class="title relative my-2 text-4xl font-bold">{make + " " + model + " ~ S/N: " + serial}</h1>
       Drive Type: <code>{size} {type}</code>
       <br>
       Drive Capacity: <code>{capacity}</code> 

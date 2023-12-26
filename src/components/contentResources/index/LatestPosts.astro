@@ -22,9 +22,7 @@ const last_posts = posts.slice(0, 3);
             url={"/blog/" + post.slug}
             target=""
             badge={post.data.badge}
-            blogbadge={post.data.blogbadge}
-            tutorialbadge={post.data.tutorialbadge}
-            projectbadge={post.data.projectbadge}
+            tags={post.data.tags}
           />
       ))
     }

@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }){const hddreportlist = await g
 const { page } = Astro.props;
 ---
 <BaseLayout title="HDD Reports" sideBarActiveItemID="hddreports">
-  <div class="w-[1000px] pd-2 scooootch bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
+  <div class="pd-2 scooootch bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
     <div class="items-center"><br><div class="text-5xl font-bold"><center>Hard Drive Wiped Disk Reports</center></div><br></div>
     <SearchWidget />
     <Example />

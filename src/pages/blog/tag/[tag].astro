@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from '@layouts/BaseLayout.astro'
+import HorizontalCard from "@components/cards/HorizontalCard.astro";
+
+export async function getStaticPaths() {
+    const allPosts = await getCollection("blog");
+    const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) =>
+        post.data.tags.includes(tag)
+        );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+}
+const allPosts2 = await getCollection("blog");
+const tagListed = [...new Set(allPosts2.map((post) => post.data.tags).flat())];
+
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout title="Blog" sideBarActiveItemID="blog">
+<main>
+    <div class="pd-2 bg-white border scooootch border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 mt-5">
+        <div class="items-center w-full">
+            <br />
+            <div class="text-5xl font-bold">
+                <center>Posts tagged with {tag}</center>
+            </div>
+            <br />
+        </div>
+        <div class="p-4 inline-flex text-sm text-gray-900 rounded-badge bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
+        Tags: {tagListed.map((tag) => <a href={`/blog/tag/${tag}`} class="ml-2 badge badge-outline">{tag}</a>)}
+        </div>
+        <div class="divider my-1" /> 
+        <ul>
+            { posts.map((post) => (
+                <> 
+                <HorizontalCard 
+                title={post.data.title} 
+                img={post.data.heroImage} 
+                desc={post.data.description} 
+                url={"/blog/" + post.slug} 
+                target="_self" 
+                badge={post.data.badge} 
+                tags={post.data.tags}
+                />
+                <div class="divider my-1" /> 
+                </>
+                ))}
+        </ul>
+    </div>
+</main>
+</BaseLayout>

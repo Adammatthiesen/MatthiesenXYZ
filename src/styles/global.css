@@ -4,6 +4,12 @@
    display: none;
  }
 
+ @media (min-width: 200px) {
+   .xs\:invisible {
+       visibility: hidden;
+   }
+}
+
 .svg {
    color : "white";
    fill : "white";
