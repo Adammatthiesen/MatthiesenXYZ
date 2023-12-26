@@ -36,7 +36,7 @@ const { posts } = Astro.props;
             <br />
         </div>
         <div class="p-4 inline-flex text-sm text-gray-900 rounded-badge bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
-        Tags: {tagListed.map((tag) => <a href={`/blog/tag/${tag}`} class="ml-2 badge badge-outline">{tag}</a>)}
+        Tags: {tagListed.map((tag) => <a href={`/blog/tag/${tag}`} class="ml-2 h-auto badge badge-outline">{tag}</a>)}
         </div>
         <ul>
             { posts.map((post) => (

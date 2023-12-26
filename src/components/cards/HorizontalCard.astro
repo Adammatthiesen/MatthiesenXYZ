@@ -25,7 +25,7 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
         <h1 class="text-xl font-bold">
           {title}<br>
           {cfbadge && <div class="flex"><img src={cfbadge}></div>}
-          {badge && <div class="badge badge-secondary bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{badge}</div>}
+          {badge && <div class="badge badge-secondary h-auto bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{badge}</div>}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-end">
