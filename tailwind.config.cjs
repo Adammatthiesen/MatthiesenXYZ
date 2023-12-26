@@ -14,8 +14,6 @@ module.exports = {
 	},
 	plugins: [
 		require("daisyui"),
-		require("postcss-import"),
-		require('tailwindcss/nesting')(require('postcss-nesting')),
 		require("@tailwindcss/typography")
 	],
 	daisyui: {

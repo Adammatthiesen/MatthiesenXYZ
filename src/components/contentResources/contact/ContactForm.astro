@@ -1,4 +1,6 @@
 ---
+import "./contact.css"
+
 const errors = { name: "", email: "", message: "" };
 
 if (Astro.request.method === "POST") {
@@ -38,7 +40,7 @@ if (Astro.request.method === "POST") {
 
         <div class="divider my-0" />
 
-        <form action=https://usebasin.com/f/79245cca5e1f method=POST class="cf">
+        <form action=https://usebasin.com/f/79245cca5e1f method=POST class="cf contact">
             <div class="half left cf">
                 <input type="text" id="input-name" name="name" placeholder="Name">
                 <input type="email" id="input-email" name="email" placeholder="Email address">
