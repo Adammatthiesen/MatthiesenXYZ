@@ -1,5 +1,7 @@
 import { z, defineCollection } from "astro:content";
 
+//// SCHEMAS
+// BLOG SCHEMA | Type "content"
 const blogSchema = z.object({
         title: z.string(),
         description: z.string(),
@@ -10,7 +12,7 @@ const blogSchema = z.object({
         badge: z.string().optional(),
         tags: z.array(z.string()),
 }) 
-
+// HDD REPORT SCHEMA | Type "data"
 const hddSchema = z.object({
         serial: z.string(),
         make: z.string(),
@@ -28,8 +30,10 @@ const hddSchema = z.object({
 // EXPORT SCHEMA
 export type BlogSchema = z.infer<typeof blogSchema>;
 export type HddSchema = z.infer<typeof hddSchema>;
-// COLLECTION IS SCHEMA
-const blogCollection = defineCollection({ schema: blogSchema });
+
+// DEFINE COLLECTION SCHEMA AND TYPE
+const blogCollection = defineCollection({ type: "content", schema: blogSchema });
 const hddreportsCollection = defineCollection({ type: "data", schema: hddSchema });
-// EXPORT COLLECTIONS
+
+// FINAL EXPORT OF COLLECTIONS TO "ASTRO:CONTENT"
 export const collections = { 'blog': blogCollection, 'hddreports': hddreportsCollection, }

@@ -1,22 +1,21 @@
 ---
-//
-//
-// PAGE IS DISABLED DUE TO CHANGE FROM COLLECTION 
-//           TYPE FROM "CONTENT" TO "DATA"
-//
-//
+////
+////   PAGE DISABLED AS I SWITCHED COLLECTION TYPE
+////   "CONTENT" to "DATA"
+////
 import { type CollectionEntry, getCollection } from 'astro:content';
 import type { HddSchema } from '../../content/config';
 import HddLayout from '@layouts/HddLayout.astro';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 dayjs.extend(localizedFormat);
-
- const hddEntries = await getCollection('hddreports');
- hddEntries.map(entry => ( { params: { slug: entry.id }, props: { entry }, } )); 
+export async function getStaticPaths() { const hddEntries = await getCollection('hddreports');
+    return hddEntries.map(entry => ( { params: { slug: entry.slug }, props: { entry }, } )); }
 interface Props { entry: CollectionEntry<"hddreports">; }
 const { entry } = Astro.props;
 const post : HddSchema = entry.data;
+const { Content } = await entry.render();
+const displayDate = dayjs(post.reportDate).format("ll");
 ---
 <HddLayout 
     serial={post.serial}
@@ -30,4 +29,5 @@ const post : HddSchema = entry.data;
     pdf={post.pdf}
     isSSD={post.isSSD}
     >
+    <Content />
 </HddLayout>
