@@ -1,4 +1,3 @@
----
 serial: HBSA18500100220
 make: HP
 model: S700
@@ -6,8 +5,7 @@ capacity: 120Gb
 size: 2.5"
 type: SDD
 reportDate: Dec 20 2023
-#manuDate: Not Specified
+manuDate: jan 1 55 #THIS MEANS NOT AVAILABLE
 pdf: true
 isSSD: true
----
 

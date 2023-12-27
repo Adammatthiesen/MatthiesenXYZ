@@ -1,12 +1,13 @@
 ---
-const { title, desc, url, badge, isSSD, tags, target = "_blank" } = Astro.props;
+const { title, desc, desc2, url, badge, isSSD, target, pdf, serial = "_blank" } = Astro.props;
 import Hddreportimg from "@components/contentResources/hddreports/Hddreportimg.astro";
+const PDFTRUE = "bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300";
+const PDFFALSE = "bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300";
 ---
 
 <div
   class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
 >
-  <a href={url} target={target}> 
     <table><tr> 
       <td> 
         <div class="hero-content pd-2 py-2 mt-8  text-xl font-bold inline flex-col md:flex-row">
@@ -22,16 +23,14 @@ import Hddreportimg from "@components/contentResources/hddreports/Hddreportimg.a
             <h2 class="text-l font-bold">
               {badge && <div class="py-1 text-1xl">{badge}</div>}
             </h2>
+            <p class="py-1 text-1xl">Manufacture Date: <b>{desc2}</b></p>
             <p class="py-1 text-1xl">{desc}</p>
-            <div class="card-actions justify-end">
-              {
-                tags &&
-                  tags.map((tag) => <div class="badge badge-outline">{tag}</div>)
-              }
+            <div class="card-actions justify-start">
+              {pdf === true ? 
+                <a target="_blank" href={"/hddreports/" + serial + ".pdf"}><div class={PDFTRUE}>View PDF Report</div></a> : <div class={PDFFALSE}>No Report Available</div>}
             </div>
           </div>
       </td>
     </tr></table>
     </div>
-  </a>
 </div>

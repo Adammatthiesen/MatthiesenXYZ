@@ -30,6 +30,6 @@ export type BlogSchema = z.infer<typeof blogSchema>;
 export type HddSchema = z.infer<typeof hddSchema>;
 // COLLECTION IS SCHEMA
 const blogCollection = defineCollection({ schema: blogSchema });
-const hddreportsCollection = defineCollection({ schema: hddSchema });
+const hddreportsCollection = defineCollection({ type: "data", schema: hddSchema });
 // EXPORT COLLECTIONS
 export const collections = { 'blog': blogCollection, 'hddreports': hddreportsCollection, }

@@ -14,7 +14,7 @@ export async function getStaticPaths() { const postEntries = await getCollection
 interface Props { entry: CollectionEntry<"blog">; }
 const { entry } = Astro.props;
 const post: BlogSchema = entry.data;
-const { Content, remarkPluginFrontmatter } = await entry.render();
+const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 const tz = "America/Los_Angeles"
 const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().local().tz().format('LL');
 ---
@@ -25,7 +25,6 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().local().t
   heroImage={post.heroImage}
   updatedDate={lastModified} 
   badge={post.badge}
-  tags={post.tags}
->
+  tags={post.tags}>
   <Content />
-</PostLayout>
+</BlogPostLayout>
