@@ -4,7 +4,7 @@ model: MODEL
 capacity: 0Gb
 size: 2.5"/3.5"
 type: SDD/HDD
-reportDate: Dec 20 2023
-manuDate: Jan 1 2015 ### "jan 1 55" MEANS NOT AVAILABLE
-pdf: true/false
 isSSD: true/false
+manuDate: Jan 1 2015 ### "jan 1 55" MEANS NOT AVAILABLE
+reportDate: Dec 20 2023
+pdf: true/false
