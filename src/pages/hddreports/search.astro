@@ -7,7 +7,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">
       <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-7 h-7 text-gray-500 dark:text-gray-400 bi bi-hdd-fill" viewBox="0 0 20 20"><path d="M0 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M.91 7.204A2.993 2.993 0 0 1 2 7h12c.384 0 .752.072 1.09.204l-1.867-3.422A1.5 1.5 0 0 0 11.906 3H4.094a1.5 1.5 0 0 0-1.317.782L.91 7.204"/></svg>
       </div>
     <input 
       type="search" 
@@ -25,7 +25,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 <script>
   // imports
   import DOMPurify from "dompurify";
-  import Fuse from "fuse.js"
+  import Fuse from "fuse.js";
   // Constant Values
   let SEARCH_DATA;
   let FUSE_INSTANCE;
@@ -33,8 +33,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   const SPINNER = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="justify-center bi bi-arrow-clockwise" viewBox="0 0 16 16" id="spinner">
   <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/><style> #spinner { animation: spin 1s linear infinite; } @keyframes spin { 100% { transform: rotate(360deg); }}</style></svg>`;
   const NOTHING_FOUND = `<div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-900 dark:text-red-400 dark:border-red-800" role="alert"><svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/></svg><span class="sr-only">Error</span><div><span class="font-medium">No results found...</span> Please try again!</div></div>`;
-  const SSD_IMG = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="pd-2 px-2 bi bi-device-ssd" viewBox="0 0 16 16"><path d="M4.75 4a.75.75 0 0 0-.75.75v3.5c0 .414.336.75.75.75h6.5a.75.75 0 0 0 .75-.75v-3.5a.75.75 0 0 0-.75-.75zM5 8V5h6v3zm0-5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m7 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m7 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm11 12V2a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1v-2a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 0 1-1m-7.25 1v-2H5v2zm1.75 0v-2h-.75v2zm1.75 0v-2H8.5v2zM11 13h-.75v2H11z"/></svg>`;
-  const HDD_IMG = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="pd-2 px-2 bi bi-device-hdd" viewBox="0 0 16 16"><path d="M12 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-7.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M8 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/><path d="M12 7a4 4 0 0 1-3.937 4c-.537.813-1.02 1.515-1.181 1.677a1.102 1.102 0 0 1-1.56-1.559c.1-.098.396-.314.795-.588A4 4 0 0 1 8 3a4 4 0 0 1 4 4m-1 0a3 3 0 1 0-3.891 2.865c.667-.44 1.396-.91 1.955-1.268.224-.144.483.115.34.34l-.62.96A3.001 3.001 0 0 0 11 7"/><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/></svg>`;
+  const SSD_IMG = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="text-white pd-2 px-2 bi bi-device-ssd" viewBox="0 0 16 16"><path d="M4.75 4a.75.75 0 0 0-.75.75v3.5c0 .414.336.75.75.75h6.5a.75.75 0 0 0 .75-.75v-3.5a.75.75 0 0 0-.75-.75zM5 8V5h6v3zm0-5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m7 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m7 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm11 12V2a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1v-2a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2a1 1 0 0 0 1-1m-7.25 1v-2H5v2zm1.75 0v-2h-.75v2zm1.75 0v-2H8.5v2zM11 13h-.75v2H11z"/></svg>`;
+  const HDD_IMG = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="text-white pd-2 px-2 bi bi-device-hdd" viewBox="0 0 16 16"><path d="M12 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-7.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M8 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/><path d="M12 7a4 4 0 0 1-3.937 4c-.537.813-1.02 1.515-1.181 1.677a1.102 1.102 0 0 1-1.56-1.559c.1-.098.396-.314.795-.588A4 4 0 0 1 8 3a4 4 0 0 1 4 4m-1 0a3 3 0 1 0-3.891 2.865c.667-.44 1.396-.91 1.955-1.268.224-.144.483.115.34.34l-.62.96A3.001 3.001 0 0 0 11 7"/><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/></svg>`;
   // selectors
   const search = document.querySelector("#search");
   const searchReadout = document.querySelector("#searchReadout");
@@ -65,23 +65,30 @@ import BaseLayout from "@layouts/BaseLayout.astro";
       const dateasLocal = new Date(date).toLocaleDateString("en-us",{year: "numeric", month: "short", day: "numeric"});
       const driveIMG = isSSD === true ? SSD_IMG : HDD_IMG;
       return `
-      <li><div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
-        <a href='/hddreports/${slug}' target=""><table><tr>
-          <td>
-            <div class="hero-content pd-2 px-2 py-2 mt-8 text-xl font-bold inline flex-col md:flex-row">
-              ${driveIMG}
-            </div>
-          </td>
-          <td>
-            <div class="hero-content flex-col md:flex-row"><div class="grow w-full">
-              <h1 class="text-xl font-bold">${make} ${model} ~ S/N: ${serial}</h1>
-              <h2 class="text-l font-bold">${capacity} - ${size} ${type}</h2>
-              <p class="py-1 text-1xl">
-              Report Date: <time datetime="${dateasISO}">${dateasLocal}</time>
-              </p></div>
-            </div>
-          </td></tr></table>
-        </a></div><br>
+      <li>
+        <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
+        <a href='/hddreports/${slug}' target="">
+          <table>
+            <tr>
+              <td>
+                <div class="hero-content pd-2 px-2 py-0 mt-4 text-xl font-bold inline flex-col md:flex-row">
+                  ${driveIMG}
+                </div>
+              </td>
+              <td>
+                <div class="hero-content flex-col md:flex-row"><div class="grow w-full">
+                  <h1 class="text-xl font-bold">${make} ${model} ~ S/N: ${serial}</h1>
+                  <h2 class="text-l font-bold">${capacity} - ${size} ${type}</h2>
+                  <p class="py-1 text-1xl">
+                    Report Date: <time datetime="${dateasISO}">${dateasLocal}</time>
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </a>
+        </div>
+        <div class="my-1" />
       </li>`;
     }).join("");
   }
